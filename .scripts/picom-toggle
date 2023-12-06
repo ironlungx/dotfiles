@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if pgrep -x "picom" > /dev/null
+then
+	killall picom
+else
+	picom --experimental-backends > /dev/null 2>&1 &
+fi

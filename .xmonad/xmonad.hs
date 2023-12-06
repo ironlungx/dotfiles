@@ -29,7 +29,7 @@ myBrowser     = "min"
 myRun         = "~/.config/polybar/forest/scripts/launcher.sh"
 myEditor      = "codium -n --profile Default"
 myWallpaper   = "~/.wallpapers/groovy.jpg"
-myLock        = "i3lock-fancy -t \"\""
+myLock        = "i3lock-fancy -p -t \"\""
 myPowermenu   = "~/.config/polybar/forest/scripts/powermenu.sh"
 
 myLayout = tiled ||| Mirror tiled ||| Full
@@ -53,8 +53,10 @@ myManageHook = composeAll
     [title =? "XMonadRecompile" --> doFloat]
 
 scratchpads = [
-    NS "spt" "LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify" (className =? "Spotify") center,
-    NS "dc" "discord" (className =? "discord") center,
+    NS "spt"     "LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify" (className =? "Spotify") center,
+    NS "dc"      "discord"                                              (className =? "discord") center,
+    NS "term"    "kitty --class=scratchpadTerm"                         (className =? "scratchpadTerm") center,
+
     NS "dotconf" "codium -n config.code-workspace --profile \"dotfile config\"" (title =? "dotconf") center
   ]
   where 
@@ -93,9 +95,10 @@ myConfig = def
     , ("M-S-l", sendMessage MirrorShrink )
     , ("M-S-h", sendMessage MirrorExpand )
 
-    , ("M-a s", namedScratchpadAction scratchpads "spt" )
-    , ("M-a d", namedScratchpadAction scratchpads "dc"  )
-    , ("M-a c", namedScratchpadAction scratchpads "dotconf")
+    , ("M-a s",        namedScratchpadAction scratchpads "spt" )
+    , ("M-a d",        namedScratchpadAction scratchpads "dc"  )
+    , ("M-a c",        namedScratchpadAction scratchpads "dotconf")
+    , ("M-a <Return>", namedScratchpadAction scratchpads "term")
 
     , ("M-s p", spawn "~/.scripts/picom-toggle")
 
@@ -110,9 +113,13 @@ myConfig = def
     , ("<XF86AudioNext>",        spawn "playerctl next"                            )
 
     , ("<Print>", spawn "scrot -e 'xclip -selection clipboard -t image/png -i $f'" )
+
+
     ]
     `additionalMouseBindings`
-    [
+    [ ((0, 11), (\_ -> spawn "playerctl play-pause"))
+    , ((mod4Mask, 5), (\_ -> spawn "pactl set-sink-volume @DEFAULT_SINK@ -1%")) 
+    , ((mod4Mask, 4), (\_ -> spawn "pactl set-sink-volume @DEFAULT_SINK@ +1%")) 
     ]
 
 

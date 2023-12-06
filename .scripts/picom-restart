@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Check if picom is running
+if pgrep -x "picom" > /dev/null
+then
+    # If it's running, kill it
+    pkill picom
+
+    # Wait for the process to die
+    while pgrep -x "picom" > /dev/null
+    do
+        sleep 0.1
+    done
+fi
+
+# Start picom
+picom > /dev/null 2>&1 &
