@@ -1,0 +1,68 @@
+--  __    __  ________  __      __  _______   ______  __    __  _______    ______  
+-- /  |  /  |/        |/  \    /  |/       \ /      |/  \  /  |/       \  /      \ 
+-- $$ | /$$/ $$$$$$$$/ $$  \  /$$/ $$$$$$$  |$$$$$$/ $$  \ $$ |$$$$$$$  |/$$$$$$  |
+-- $$ |/$$/  $$ |__     $$  \/$$/  $$ |__$$ |  $$ |  $$$  \$$ |$$ |  $$ |$$ \__$$/ 
+-- $$  $$<   $$    |     $$  $$/   $$    $$<   $$ |  $$$$  $$ |$$ |  $$ |$$      \ 
+-- $$$$$  \  $$$$$/       $$$$/    $$$$$$$  |  $$ |  $$ $$ $$ |$$ |  $$ | $$$$$$  |
+-- $$ |$$  \ $$ |_____     $$ |    $$ |__$$ | _$$ |_ $$ |$$$$ |$$ |__$$ |/  \__$$ |
+-- $$ | $$  |$$       |    $$ |    $$    $$/ / $$   |$$ | $$$ |$$    $$/ $$    $$/ 
+-- $$/   $$/ $$$$$$$$/     $$/     $$$$$$$/  $$$$$$/ $$/   $$/ $$$$$$$/   $$$$$$/  
+
+module Config.Binds where 
+
+import XMonad
+import qualified XMonad.StackSet as W
+import XMonad.Util.Run
+import XMonad.Util.NamedScratchpad
+
+import XMonad.Layout.ResizableTile
+
+import Config.Scratchpads
+import Config.Variables
+
+
+myKeys = [ ("M-q",   spawn "kitty --class=XMonadRecomplie -- sh -c \'/usr/bin/xmonad --recompile || read -p  \"Press Enter to exit...\" cap\'" )
+         , ("M-r",   spawn "xmonad --restart"   )
+         , ("M-S-q", kill                       )
+         , ("M-p",   spawn myRun                )
+         , ("M-S-p", spawn "rofi -show run")
+         , ("M-S-z", spawn myLock               )
+         , ("M-e",   spawn myExplorer           )
+         , ("M-v",   spawn greenclipRofi        )
+
+         , ("M-<L>", windows W.focusUp)
+         , ("M-<R>", windows W.focusDown)
+         , ("M-<U>", windows W.focusUp)
+         , ("M-<D>", windows W.focusDown)
+         
+         , ("M-<Escape>",   spawn myPowermenu )
+         , ("M-S-<Return>", spawn myTerminal  )
+         , ("M-C-<Return>", spawn myBrowser   )
+
+         , ("M-S-h", sendMessage MirrorExpand )
+         , ("M-S-l", sendMessage MirrorShrink )
+         
+         , ("M-a s",        namedScratchpadAction scratchpads "spt" )
+         , ("M-a d",        namedScratchpadAction scratchpads "dc"  )
+         , ("M-a c",        namedScratchpadAction scratchpads "dotconf")
+         , ("M-a <Return>", namedScratchpadAction scratchpads "term")
+
+         , ("M-n c", spawn "dunstctl close-all")
+         , ("M-n d", spawn "/home/ironlung/.config/dunst/dnd")
+
+         
+         , ("M-s p", spawn "~/.scripts/picom-toggle")
+         , ("M-s b", spawn "rofi-bluetooth")
+         
+         , ("M-z", spawn "playerctl play-pause" )
+         , ("M-c", spawn myEditor               )
+         
+         , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -10%" )
+         , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +10%" )
+         , ("<XF86AudioMute>",        spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle" )
+         , ("<XF86AudioPlay>",        spawn "playerctl play-pause"                      )
+         , ("<XF86AudioPrev>",        spawn "playerctl previous"                        )
+         , ("<XF86AudioNext>",        spawn "playerctl next"                            )
+         
+         , ("<Print>", spawn "flameshot gui" )
+         ]
