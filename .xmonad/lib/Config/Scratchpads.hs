@@ -18,7 +18,7 @@ scratchpads = [
     NS "dc"      "discord"                                              (className =? "discord") center,
     NS "term"    "kitty --class=scratchpadTerm"                         (className =? "scratchpadTerm") center,
 
-    NS "dotconf" "codium -n config.code-workspace --profile \"dotfile config\"" (title =? "dotconf") center
+    NS "dotconf" "kitty --class=dotconf -- sh -c \"cd ~/dotfiles/ ; nvim\""    (className =? "dotconf") center
   ]
   where 
     center = customFloating $ W.RationalRect l t w h

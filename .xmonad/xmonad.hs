@@ -29,7 +29,7 @@ import Colors.GruvboxDark
 myConfig = def
     { XMonad.terminal            = myTerminal
     , XMonad.modMask             = mod4Mask
-    , XMonad.focusFollowsMouse   = True
+    , XMonad.focusFollowsMouse   = False 
     , XMonad.borderWidth         = 1
     , XMonad.normalBorderColor   = colorBack
     , XMonad.focusedBorderColor  = color15
