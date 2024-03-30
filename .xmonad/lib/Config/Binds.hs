@@ -47,12 +47,7 @@ myKeys = [ ("M-q",   spawn "kitty --class=XMonadRecomplie -- sh -c \'/usr/bin/xm
          , ("M-a c",        namedScratchpadAction scratchpads "dotconf")
          , ("M-a <Return>", namedScratchpadAction scratchpads "term")
 
-         , ("M-n c", spawn "dunstctl close-all")
-         , ("M-n d", spawn "/home/ironlung/.config/dunst/dnd")
-
-         
          , ("M-s p", spawn "~/.scripts/picom-toggle")
-         , ("M-s b", spawn "rofi-bluetooth")
          
          , ("M-z", spawn "playerctl play-pause" )
          , ("M-c", spawn myEditor               )

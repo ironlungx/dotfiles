@@ -28,7 +28,7 @@ import Colors.GruvboxDark
     
 myConfig = def
     { XMonad.terminal            = myTerminal
-    , XMonad.modMask             = mod4Mask
+    , XMonad.modMask             = mod4Mask -- Super key
     , XMonad.focusFollowsMouse   = False 
     , XMonad.borderWidth         = 1
     , XMonad.normalBorderColor   = colorBack
@@ -44,5 +44,5 @@ main :: IO ()
 main = xmonad 
      . ewmhFullscreen 
      . ewmh 
-     . docks
+     . docks -- required for polybar?
      $ myConfig
