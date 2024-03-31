@@ -68,4 +68,6 @@ Following are dependencies, make sure you have them installed.
 
 Note: Programs with a `*` can be changed to alternatives in `.xmonad/lib/Config/Variables.hs`
 
+## Installation
+
 
