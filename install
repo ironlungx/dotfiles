@@ -57,8 +57,8 @@ case $vid in
 	;;
 esac
 
-printf "${R} # Installing packages : (xorg xorg-xinit xorg-xinput ${DRI} xmonad xmonad-contrib xmonad-dbus stow feh rofi picom dunst maim xclip polybar eza playerctl thunar firefox pulseaudio pulseaudio-alsa bat) ${NC}\n"
-sudo pacman -S --needed --noconfirm xorg xorg-xinit xorg-xinput $DRI xmonad xmonad-contrib xmonad-dbus stow feh rofi picom dunst maim xclip polybar eza playerctl thunar firefox pulseaudio pulseaudio-alsa bat
+printf "${R} # Installing packages : (xorg xorg-xinit xorg-xinput ${DRI} xmonad xmonad-contrib xmonad-dbus stow feh rofi picom dunst maim xclip polybar eza playerctl thunar firefox pulseaudio pulseaudio-alsa bat kitty) ${NC}\n"
+sudo pacman -S --needed --noconfirm xorg xorg-xinit xorg-xinput $DRI xmonad xmonad-contrib xmonad-dbus stow feh rofi picom dunst maim xclip polybar eza playerctl thunar firefox pulseaudio pulseaudio-alsa bat kitty
 
 pause
 clear
