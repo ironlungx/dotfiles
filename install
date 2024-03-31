@@ -1,0 +1,145 @@
+#! /usr/bin/bash
+#install script for the dotfiles
+
+R='\033[0;31m'   #'0;31' is Red's ANSI color code
+G='\033[0;32m'   #'0;32' is Green's ANSI color code
+Y='\033[1;32m'   #'1;32' is Yellow's ANSI color code
+B='\033[0;34m'   #'0;34' is Blue's ANSI color code
+NC='\033[0m' # No Color
+
+pause() {
+  printf "${Y} Press any key to continue${NC}"
+  read -n 1 -s -r  
+  printf "\r"
+}
+
+set -e
+printf "${R}# Hello there, looks like you want to yoink my dots. :D ${NC}\n"
+sleep 2
+
+HELPER="paru"
+
+printf "${R}# Updating your system (sudo pacman -Syu)${NC}\n"
+echo 
+sudo pacman --noconfirm -Syu
+
+pause
+
+printf "${R} # Installing base packages (base-devel, wget, git) ${NC}\n"
+sudo pacman --noconfirm --needed -S base-devel wget git
+
+echo
+
+printf "${R} # Video driver${NC}"
+echo 
+
+echo "1) xf86-video-intel 	2) xf86-video-amdgpu 3) nvidia 4) Skip"
+read -r -p "Choose you video card driver(default 4)(will not re-install): " vid
+
+case $vid in 
+[1])
+	DRI='xf86-video-intel'
+	;;
+
+[2])
+	DRI='xf86-video-amdgpu'
+	;;
+
+[3])
+    DRI='nvidia nvidia-settings nvidia-utils'
+    ;;
+
+[4])
+	DRI=""
+	;;
+[*])
+	DRI=''
+	;;
+esac
+
+printf "${R} # Installing packages : (xorg xorg-xinit xorg-xinput ${DRI} xmonad xmonad-contrib xmonad-dbus stow feh rofi picom dunst maim xclip polybar eza playerctl thunar firefox pulseaudio pulseaudio-alsa bat) ${NC}\n"
+sudo pacman -S --needed --noconfirm xorg xorg-xinit xorg-xinput $DRI xmonad xmonad-contrib xmonad-dbus stow feh rofi picom dunst maim xclip polybar eza playerctl thunar firefox pulseaudio pulseaudio-alsa bat
+
+pause
+clear
+
+printf "${R} # Packages have been installed${NC}\n"
+printf "${R} # AUR helper ${NC}\n"
+
+
+printf "${Y}We need an AUR helper. It is essential. 1) paru       2) yay\nWhat is the AUR helper of your choice? (default is paru): ${NC}"
+read -r num
+
+echo
+
+if [ $num -eq 2 ]
+then
+    HELPER="yay"
+fi
+
+if ! command -v $HELPER &> /dev/null
+then
+    echo "It seems that you don't have $HELPER installed, I'll install that for you before continuing."
+	git clone https://aur.archlinux.org/$HELPER.git ~/.srcs/$HELPER
+	(cd ~/.srcs/$HELPER/ && makepkg -si )
+fi
+
+$HELPER --quiet -S \
+  rofi-greenclip \
+  i3lock-fancy-git \
+
+printf "${R} # All packages installed ${NC}\n"
+printf "${R} # Backing up config(s) (if any) ${NC}\n"
+
+mkdir -p ~/.config
+mkdir -p ~/.config.bak/
+
+if [ -d ~/.config/dunst ]; then
+  echo "Backing up dunst config"
+  mv ~/.config/dunst/ ~/.config.bak/dunst/
+fi 
+
+if [ -d ~/.config/fish ]; then 
+  echo "Backing up fish config"
+  mv ~/.config/fish/ ~/.config.bak/fish
+fi 
+
+if [ -d ~/.config/kitty ]; then
+  echo "Backing up kitty config"
+  mv ~/.config/kitty ~/.config.bak/kitty
+fi 
+
+if [ -d ~/.config/nvim ]; then
+  echo "Backing up neovim configuration"
+  mv ~/.config/nvim ~/.config.bak/nvim
+fi 
+
+if [ -d ~/.config/rofi ]; then
+  echo "Backing up rofi configs"
+  mv ~/.config/rofi ~/.config.bak/rofi.bak
+fi
+
+if [ -d ~/.scripts ]; then
+  echo "Backing up scripts"
+  mv ~/.scripts/ ~/.scripts.bak/
+fi 
+
+if [ -d ~/.wall ]; then
+  echo "Backing up walls"
+  mv ~/.wall ~/.wall.bak
+fi 
+
+if [ -f ~/.xinitrc ]; then
+  echo "Backing up .xinitrc"
+  mv ~/.xinitrc ~/.xinitrc.bak 
+fi
+
+if [ -d ~/.xmonad ]; then
+  echo "Backing up xmonad configs"
+  mv ~/.xmonad ~/.xmonad.bak 
+fi 
+
+printf "${R} # Back up finished\n # Copying (stowing) files ${NC}\n"
+
+stow .
+
