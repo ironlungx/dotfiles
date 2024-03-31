@@ -87,6 +87,7 @@ fi
 $HELPER --quiet -S \
   rofi-greenclip \
   i3lock-fancy-git \
+  ttf-jetbrains-mono-nerd 
 
 printf "${R} # All packages installed ${NC}\n"
 printf "${R} # Backing up config(s) (if any) ${NC}\n"
