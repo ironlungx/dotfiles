@@ -18,3 +18,4 @@ myPowermenu   = "killall xinit"
 myWorkspaces  = ["1", "2", "3", "4", "5"]
 myExplorer    = "thunar"
 greenclipRofi = "rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}'"
+myScreenshot  = "maim -u -s | xclip -selection clipboard -t image/png"

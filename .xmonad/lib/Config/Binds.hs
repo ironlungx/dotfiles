@@ -59,5 +59,5 @@ myKeys = [ ("M-q",   spawn "kitty --class=XMonadRecomplie -- sh -c \'/usr/bin/xm
          , ("<XF86AudioPrev>",        spawn "playerctl previous"                        )
          , ("<XF86AudioNext>",        spawn "playerctl next"                            )
          
-         , ("<Print>", spawn "flameshot gui" )
+         , ("<Print>", spawn myScreenshot )
          ]
