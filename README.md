@@ -60,7 +60,7 @@ $ cd dotfiles
 <a id="inst-arch"></a>
 
 ### Arch Linux installation
-Before installing go read (Optional Deps)[#opt-deps] ~~and then come back~~
+Before installing go read [Optional Deps](#opt-deps) ~~and then come back~~
 I've made an install-dependencies script that will install all the dependencies with `pacman` and `paru/yay`. It won't copy over the actual configs for the system.
 `./install.sh`
 To install the configs [Stowing](#stow) 
@@ -103,7 +103,7 @@ Following are dependencies that can be changed to alternative programs in [Varia
 
 A `*` represents a change in the config.fish, just remove the aliases and sources
 
-Continue to (Stowing)[#stow]
+Continue to [Stowing](#stow)
 
 <a id="stow"></a>
 
