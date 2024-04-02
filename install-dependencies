@@ -90,57 +90,6 @@ $HELPER --quiet -S \
   ttf-jetbrains-mono-nerd
 
 printf "${R} # All packages installed ${NC}\n"
-printf "${R} # Backing up config(s) (if any) ${NC}\n"
 
-mkdir -p ~/.config
-mkdir -p ~/.config.bak/
-
-if [ -d ~/.config/dunst ]; then
-  echo "Backing up dunst config"
-  mv ~/.config/dunst/ ~/.config.bak/dunst/
-fi 
-
-if [ -d ~/.config/fish ]; then 
-  echo "Backing up fish config"
-  mv ~/.config/fish/ ~/.config.bak/fish
-fi 
-
-if [ -d ~/.config/kitty ]; then
-  echo "Backing up kitty config"
-  mv ~/.config/kitty ~/.config.bak/kitty
-fi 
-
-if [ -d ~/.config/nvim ]; then
-  echo "Backing up neovim configuration"
-  mv ~/.config/nvim ~/.config.bak/nvim
-fi 
-
-if [ -d ~/.config/rofi ]; then
-  echo "Backing up rofi configs"
-  mv ~/.config/rofi ~/.config.bak/rofi.bak
-fi
-
-if [ -d ~/.scripts ]; then
-  echo "Backing up scripts"
-  mv ~/.scripts/ ~/.scripts.bak/
-fi 
-
-if [ -d ~/.wall ]; then
-  echo "Backing up walls"
-  mv ~/.wall ~/.wall.bak
-fi 
-
-if [ -f ~/.xinitrc ]; then
-  echo "Backing up .xinitrc"
-  mv ~/.xinitrc ~/.xinitrc.bak 
-fi
-
-if [ -d ~/.xmonad ]; then
-  echo "Backing up xmonad configs"
-  mv ~/.xmonad ~/.xmonad.bak 
-fi 
-
-printf "${R} # Back up finished\n # Copying (stowing) files ${NC}\n"
-
-stow .
+pause
 
