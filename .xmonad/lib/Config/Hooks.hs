@@ -53,8 +53,14 @@ myLayoutHook = gaps [(U,5), (R,5), (L,5), (D, 39)] $ spacingWithEdge 5
 myManageHook = namedScratchpadManageHook scratchpads <>
              composeAll 
              [ ((className =? "XMonadRecomplie")  --> (doRectFloat $ W.RationalRect 0.25 0.25 0.5 0.5 ))
-             , (isDialog                          --> (doRectFloat $ W.RationalRect 0.25 0.25 0.5 0.5 ))
-             ] 
+
+             , ((className =? "Steam")            --> doFloat     )
+             , ((className =? "steam")            --> doFullFloat )
+             , ((className =? "Steam")            --> doIgnore    )
+
+             , ((className =? "fzf-run")          --> (doRectFloat $ W.RationalRect 0.35 0.25 0.3 0.5 ))
+
+             , (isDialog                          --> (doRectFloat $ W.RationalRect 0.25 0.25 0.5 0.5 )) ] 
 
 
 myLogHook :: D.Client -> PP
