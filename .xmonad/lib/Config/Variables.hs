@@ -9,7 +9,7 @@
 module Config.Variables where 
 
 myTerminal    = "kitty"
-myBrowser     = "firefox"
+myBrowser     = "librewolf"
 myEditor      = "kitty -- nvim"
 myExplorer    = "thunar"
 myScreenshot  = "maim -u -s | xclip -selection clipboard -t image/png"

@@ -1,0 +1,28 @@
+#! /usr/bin/bash
+
+ID=`kdeconnect-cli --list-available --id-only | fzf --header="Choose device"`
+
+OPTS="ring\nping\nping-msg\nsend-clipboard\nshare\nshare-text\nlist-notifications\nlock\nunlock\nsend-sms\n"
+OPT=`printf $OPTS | fzf --header="Choose what to do"`
+
+case "$OPT" in
+  "ring") kdeconnect-cli -d $ID --ring
+    ;;
+  "ping") kdeconnect-cli -d $ID --ping
+    ;;
+  "ping-msg") (read -p "Okay, What's the message?   " MSG ; kdeconnect-cli -d $ID --ping-msg $MSG)
+    ;;
+  "send-clipboard") kdeconnect-cli -d $ID --send-clipboard
+    ;;
+  "share") (read -p "Okay, What to share?   " SHARE ; kdeconnect-cli -d $ID --share $SHARE)
+    ;;
+  "share-text") (read -p "Okay, What to share?   " SHARE ; kdeconnect-cli -d $ID --share-text $SHARE)
+    ;;
+  "list-notifications") echo "list-notif"
+    ;;
+  "lock") echo "lock"
+    ;;
+  "unlock") echo "unlock"
+    ;;
+  "send-sms") echo "send sms"
+esac

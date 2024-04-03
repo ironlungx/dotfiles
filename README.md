@@ -100,6 +100,7 @@ Following are dependencies that can be changed to alternative programs in [Varia
 | `rofi` & `rofi-greenclip` | `myRun`                              | :heavy_check_mark: |
 | `zoxide`*                 | *None*                               | :heavy_check_mark: |
 | `bat`*                    | *None*                               | :heavy_check_mark: |
+| `librewolf`               | `myBrowser`                          |                    |
 
 A `*` represents a change in the config.fish, just remove the aliases and sources
 
