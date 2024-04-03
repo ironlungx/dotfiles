@@ -15,8 +15,7 @@ myExplorer    = "thunar"
 myScreenshot  = "maim -u -s | xclip -selection clipboard -t image/png"
 myLock        = "i3lock-fancy -p -t \"\""
 
--- myRun         = "rofi -show drun run"
-myRun         = "kitty --class=fzf-run -- /usr/bin/bash -c \"/usr/bin/dmenu_path | fzf -i | sh\""
+myRun        = "kitty --class=fzf-run -- ~/.scripts/fzf-run "
 
 myWallpaper   = "~/.wall/fall.png"
 myPowermenu   = "killall xinit"
