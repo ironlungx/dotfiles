@@ -18,6 +18,7 @@ return {
 		config = function()
 			local lspconfig = require("lspconfig")
 			lspconfig.lua_ls.setup({})
+      lspconfig.clangd.setup({})
 
 			vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
 			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
