@@ -9,3 +9,4 @@ end
 
 alias cat "bat"
 alias screenshot "maim -u -s | xclip -selection clipboard -t image/png"
+alias maim "/usr/bin/maim -u -s | xclip -selection clipboard -t image/png"
