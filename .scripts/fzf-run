@@ -1,3 +1,3 @@
 #! /usr/bin/env bash
 
-exec systemd-run --user $(compgen -c | fzf)
+exec systemd-run --user $(/usr/bin/ls /usr/bin/ | fzf)
