@@ -1,2 +1,3 @@
 .xmonad/build-*
 .xmonad/xmonad-*
+.config/nvim/lazy-lock.json
