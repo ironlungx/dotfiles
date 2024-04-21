@@ -5,6 +5,7 @@ return {
 		"nvim-lua/plenary.nvim",
 	},
 	config = function()
-		require("alpha").setup(require("alpha.themes.theta").config)
+    theme = require("alpha.themes.theta").config
+		require("alpha").setup(require("alpha.themes.startify").config)
 	end,
 }

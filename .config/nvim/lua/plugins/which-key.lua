@@ -5,9 +5,36 @@ return {
 		vim.o.timeout = true
 		vim.o.timeoutlen = 300
 	end,
-	opts = {
-		-- your configuration comes here
-		-- or leave it empty to use the default settings
-		-- refer to the configuration section below
-	},
+
+  config = function ()
+    local wk = require("which-key")
+
+    -- Define all keybinds
+    wk.register {
+      ["<leader>l"] = {
+        name = "lsp",
+
+        ['d'] = {"<cmd> lua vim.lsp.buf.definition() <cr>", "goto symbol definition"},
+        ['k'] = {"<cmd> lua vim.lsp.buf.hover() <cr>", "show hover"},
+        ['i'] = {"<cmd> lua vim.lsp.buf.implementation() <cr>", "goto implementation"},
+
+        ['r'] = {"<cmd> lua vim.lsp.buf.rename() <cr>", "rename symbol"},
+        ['a'] = {"<cmd> lua vim.lsp.buf.code_actions() <cr>", "code actions"},
+        ["f"] = {"<cmd> lua vim.lsp.buf.formatting()<cr>", "Format" }
+      },
+
+      ["<leader>e"] = { "<cmd> Neotree toggle <cr>", "Toggle NeoTree"},
+      ["<leader>n"] = { "<cmd> Neotree <cr>", "Focus Neotree" },
+
+      ["<leader>f"] = {
+        name = "telescope",
+
+        ['f'] = { "<cmd> lua require(\"telescope.builtin\").find_files() <cr>", "Files"},
+        ['g'] = { "<cmd> lua require(\"telescope.builtin\").live_grep() <cr>", "Live Grep"},
+        ['b'] = { "<cmd> lua require(\"telescope.builtin\").buffers() <cr>", "Buffers"},
+        ['o'] = { "<cmd> lua require(\"telescope.builtin\").oldfiles() <cr>", "Old Files"},
+
+      }
+    }
+  end
 }
