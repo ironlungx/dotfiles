@@ -39,6 +39,7 @@ myStartupHook = do
     spawnOnce "greenclip daemon"
     spawn "dunst"
     spawn $ "feh --bg-fill --no-fehbg " ++ myWallpaper
+    spawnOnce "sunshine"
     spawn "setxkbmap -layout us -option caps:ctrl_modifier"
 
 myLayoutHook = gaps [(U,5), (R,5), (L,5), (D, 39)] $ spacingWithEdge 5 

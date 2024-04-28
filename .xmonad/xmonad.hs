@@ -16,7 +16,8 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 -- Keybinds
 import XMonad.Util.EZConfig 
-
+import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.DynamicLog
 -- Custom Config modules
 import Config.Scratchpads
 import Config.Hooks
@@ -25,7 +26,7 @@ import Config.Variables
 
 -- Color scheme (USE ONLY ONE)
 import Colors.GruvboxDark
-    
+
 myConfig = def
     { XMonad.terminal            = myTerminal
     , XMonad.modMask             = mod4Mask -- Super key
@@ -46,3 +47,6 @@ main = xmonad
      . ewmh 
      . docks -- required for polybar?
      $ myConfig
+
+
+

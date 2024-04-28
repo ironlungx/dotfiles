@@ -1,3 +1,3 @@
 QT_STYLE_OVERRIDE=kvantum
-exec xmonad
+xmonad
 # exec startplasma-x11
