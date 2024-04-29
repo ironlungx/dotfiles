@@ -11,7 +11,7 @@ module Config.Variables where
 myTerminal    = "kitty"
 myBrowser     = "librewolf"
 myEditor      = "kitty -- nvim"
-myExplorer    = "thunar"
+myExplorer    = "pcmanfm"
 myScreenshot  = "maim -u -s | xclip -selection clipboard -t image/png"
 myLock        = "i3lock-fancy -p -t \"\""
 

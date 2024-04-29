@@ -43,12 +43,13 @@ location: center;
 anchor:   center;
           border-radius: 10px;
 height: 560px;
-width: 600px;
+width: 598px;
 
        background-color: @transparent;
 spacing: 0;
 children:  [mainbox];
 orientation: horizontal;
+font: "JetBrains Mono 13";
 }
 
 mainbox {

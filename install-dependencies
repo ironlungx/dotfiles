@@ -58,7 +58,7 @@ case $vid in
 esac
 
 printf "${R} # Installing packages : (xorg xorg-xinit xorg-xinput ${DRI} xmonad xmonad-contrib xmonad-dbus stow feh rofi picom dunst maim xclip polybar eza playerctl thunar firefox pulseaudio pulseaudio-alsa bat kitty) ${NC}\n"
-sudo pacman -S --needed --noconfirm xorg xorg-xinit xorg-xinput $DRI xmonad xmonad-contrib xmonad-dbus stow feh rofi picom dunst maim xclip polybar eza playerctl thunar firefox pulseaudio pulseaudio-alsa bat kitty zoxide
+sudo pacman -S --needed --noconfirm xorg xorg-xinit xorg-xinput $DRI xmonad xmonad-contrib xmonad-dbus stow feh rofi picom dunst maim xclip polybar eza playerctl thunar firefox bat kitty zoxide
 
 pause
 clear
@@ -87,7 +87,9 @@ fi
 $HELPER --quiet -S \
   rofi-greenclip \
   i3lock-fancy-git \
-  ttf-jetbrains-mono-nerd
+  ttf-jetbrains-mono-nerd \ 
+  cava \
+  rofi-bluetooth
 
 printf "${R} # All packages installed ${NC}\n"
 
