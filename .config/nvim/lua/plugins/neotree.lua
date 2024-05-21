@@ -22,8 +22,10 @@ return {
 					never_show = { ".git" },
 				},
 			},
+      window = {
+        position = "right"
+      }
 		})
 
-		vim.keymap.set("n", "<leader>e", ":Neotree <CR>")
 	end,
 }

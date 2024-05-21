@@ -11,6 +11,7 @@ return {
 
     -- Define all keybinds
     wk.register {
+      -- LSP
       ["<leader>l"] = {
         name = "lsp",
 
@@ -19,13 +20,15 @@ return {
         ['i'] = {"<cmd> lua vim.lsp.buf.implementation() <cr>", "goto implementation"},
 
         ['r'] = {"<cmd> lua vim.lsp.buf.rename() <cr>", "rename symbol"},
-        ['a'] = {"<cmd> lua vim.lsp.buf.code_actions() <cr>", "code actions"},
-        ["f"] = {"<cmd> lua vim.lsp.buf.formatting()<cr>", "Format" }
+        ['a'] = {"<cmd> lua vim.lsp.buf.code_action() <cr>", "code actions"},
+        ["f"] = {"<cmd> lua vim.lsp.buf.format { async = true } <cr>", "Format" }
       },
 
+      -- NEOTREE
       ["<leader>e"] = { "<cmd> Neotree toggle <cr>", "Toggle NeoTree"},
       ["<leader>n"] = { "<cmd> Neotree <cr>", "Focus Neotree" },
 
+      -- TELESCOPE
       ["<leader>f"] = {
         name = "telescope",
 
@@ -34,7 +37,12 @@ return {
         ['b'] = { "<cmd> lua require(\"telescope.builtin\").buffers() <cr>", "Buffers"},
         ['o'] = { "<cmd> lua require(\"telescope.builtin\").oldfiles() <cr>", "Old Files"},
 
-      }
+      },
+
+      ["<C-h>"] = { "<C-W>h", "Right Window"},
+      ["<C-j>"] = { "<C-W>j", "Lower Window"},
+      ["<C-k>"] = { "<C-W>k", "Upper Window"},
+      ["<C-l>"] = { "<C-W>l", "Left Window"},
     }
   end
 }
