@@ -1,4 +1,4 @@
 return {
-  require("plugins.themes.gruvbox")
+  require("plugins.themes.GruvboxDark")
   -- require("plugins.themes.onedark"),
 }
