@@ -23,9 +23,11 @@ import Config.Scratchpads
 import Config.Hooks
 import Config.Binds
 import Config.Variables
+import Config.ColorSwitch
 
 -- Color scheme (USE ONLY ONE)
-import Colors.GruvboxDark
+-- import Colors.GruvboxDark
+import Colors.CatppuccinFrappe
 
 myConfig = def
     { XMonad.terminal            = myTerminal
@@ -33,20 +35,21 @@ myConfig = def
     , XMonad.focusFollowsMouse   = False 
     , XMonad.borderWidth         = 1
     , XMonad.normalBorderColor   = colorBack
-    , XMonad.focusedBorderColor  = color15
+    , XMonad.focusedBorderColor  = accent
     , XMonad.workspaces          = myWorkspaces
     , XMonad.layoutHook          = myLayoutHook
-    , XMonad.startupHook         = myStartupHook
+    , XMonad.startupHook         = myStartupHook colorScheme
     , XMonad.manageHook          = myManageHook
     }
     `additionalKeysP` myKeys
 
+
 main :: IO ()
-main = xmonad 
-     . ewmhFullscreen 
-     . ewmh 
-     . docks -- required for polybar?
-     $ myConfig
-
-
+main = do 
+  changeThemes colorScheme;
+  xmonad 
+    $ ewmhFullscreen 
+    $ ewmh 
+    $ docks 
+    $ myConfig
 

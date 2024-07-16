@@ -18,7 +18,7 @@ myLock        = "i3lock-fancy -p -t \"\""
 -- myRun        = "kitty --class=fzf-run -- ~/.scripts/fzf-run "
 myRun        = "rofi -show drun"
 
-myWallpaper   = "~/.wall/fall.png"
+myWallpaper   = "~/.wall/cat.png"
 myPowermenu   = "killall xinit"
 myWorkspaces  = ["1", "2", "3", "4", "5"]
 greenclipRofi = "rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}'"

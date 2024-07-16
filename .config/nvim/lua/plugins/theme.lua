@@ -1,4 +1,1 @@
-return {
-  require("plugins.themes.GruvboxDark")
-  -- require("plugins.themes.onedark"),
-}
+return { require("plugins.themes.catppuccin-frappe") }

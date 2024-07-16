@@ -4,9 +4,6 @@ import XMonad
 
 colorScheme = "gruvbox-dark"
 
-colorBack = "#282828"
-colorFore = "#ebdbb2"
-
 color01 = "#282828"
 color02 = "#cc241d"
 color03 = "#98971a"
@@ -24,5 +21,6 @@ color14 = "#d3869b"
 color15 = "#8ec07c"
 color16 = "#ebdbb2"
 
-colorTrayer :: String
-colorTrayer = "--tint 0x282828"
+colorBack = color01
+colorFore = color16
+accent = color07

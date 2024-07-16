@@ -30,9 +30,9 @@ import qualified Codec.Binary.UTF8.String as UTF8
 import Config.Variables
 import Config.Scratchpads
 
-myStartupHook = do
+myStartupHook themeName = do
     spawn "picom -b"
-    spawn "polybar --reload"
+    spawn $ ("polybar --reload -c ~/.config/polybar/" ++ themeName ++ "/config.ini")
     spawn "xclip"
     spawn "xsetroot -cursor_name left_ptr"
     -- spawnOnce "mpd ; mpd-mpris"
