@@ -84,13 +84,7 @@ then
 	(cd ~/.srcs/$HELPER/ && makepkg -si )
 fi
 
-$HELPER --quiet -S \
-  rofi-greenclip \
-  i3lock-fancy-git \
-  ttf-jetbrains-mono-nerd \ 
-  cava \
-  rofi-bluetooth-git
-
+$HELPER --quiet -S rofi-greenclip i3lock-fancy-git ttf-jetbrains-mono cava rofi-bluetooth-git
 printf "${R} # All packages installed ${NC}\n"
 
 pause
