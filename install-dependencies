@@ -89,7 +89,7 @@ then
 	(cd ~/.srcs/$HELPER/ && makepkg -si )
 fi
 
-$AUR_PACKS=$(echo $(for x in $(cat packagelist-aur | sed  's/[ \t]*$//' | cut -d' ' -f1 ); do printf "$x " ; done))
+AUR_PACKS="$(echo $(for x in $(cat packagelist-aur | sed  's/[ \t]*$//' | cut -d' ' -f1 ); do printf "$x " ; done))"
 
 
 # $HELPER --quiet -S rofi-greenclip i3lock-fancy-git ttf-jetbrains-mono cava rofi-bluetooth-git
