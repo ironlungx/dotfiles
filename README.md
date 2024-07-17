@@ -24,9 +24,9 @@ If you want to *yoink* my config, go to [Install](#install)
 <a id="gallery"></a>
 
 ## Gallery
-<img src='/screenshots/home.png'>
+<img src='/screenshots/image.png'>
 <img src='/screenshots/tiles.png'>
-<img src='/screenshots/nvim.png'>
+<img src='/screenshots/float.png'>
 
 <a id="keybd"></a>
 
