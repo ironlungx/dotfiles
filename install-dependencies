@@ -57,8 +57,12 @@ case $vid in
 	;;
 esac
 
-printf "${R} # Installing packages : (xorg xorg-xinit xorg-xinput ${DRI} xmonad xmonad-contrib xmonad-dbus stow feh rofi picom dunst maim xclip polybar eza playerctl pcmanfm pulseaudio pulseaudio-alsa bat kitty) ${NC}\n"
-sudo pacman -S --needed --noconfirm xorg xorg-xinit xorg-xinput $DRI xmonad xmonad-contrib xmonad-dbus stow feh rofi picom dunst maim xclip polybar eza playerctl pcmanfm bat kitty zoxide
+PACKAGES=$(for x in $(cat packagelist | sed  's/[ \t]*$//' | cut -d' ' -f1 ); do printf "$x " ; done)
+
+# printf "${R} # Installing packages : (xorg xorg-xinit xorg-xinput ${DRI} xmonad xmonad-contrib xmonad-dbus stow feh rofi picom dunst maim xclip polybar eza playerctl pcmanfm pulseaudio pulseaudio-alsa bat kitty) ${NC}\n"
+# sudo pacman -S --needed --noconfirm xorg xorg-xinit xorg-xinput $DRI xmonad xmonad-contrib xmonad-dbus stow feh rofi picom dunst maim xclip polybar eza playerctl pcmanfm bat kitty zoxide
+
+sudo pacman -S --needed $PACKAGES
 
 pause
 clear
@@ -79,13 +83,22 @@ fi
 
 if ! command -v $HELPER &> /dev/null
 then
-    echo "It seems that you don't have $HELPER installed, I'll install that for you before continuing."
+  rm -rf ~/.srcs/$HELPER
+  echo "It seems that you don't have $HELPER installed, I'll install that for you before continuing."
 	git clone https://aur.archlinux.org/$HELPER.git ~/.srcs/$HELPER
 	(cd ~/.srcs/$HELPER/ && makepkg -si )
 fi
 
-$HELPER --quiet -S rofi-greenclip i3lock-fancy-git ttf-jetbrains-mono cava rofi-bluetooth-git
+$AUR_PACKS=$(for x in $(cat packagelist-aur | sed  's/[ \t]*$//' | cut -d' ' -f1 ); do printf "$x " ; done)
+
+# $HELPER --quiet -S rofi-greenclip i3lock-fancy-git ttf-jetbrains-mono cava rofi-bluetooth-git
+$HELPER --quiet -S $AUR_PACKS
+
 printf "${R} # All packages installed ${NC}\n"
 
 pause
+clear
 
+printf "${R} To install the dotfiles, stow them by: cd dotfiles-dir && stow ."
+
+pause
