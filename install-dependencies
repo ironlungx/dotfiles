@@ -89,7 +89,7 @@ $HELPER --quiet -S \
   i3lock-fancy-git \
   ttf-jetbrains-mono-nerd \ 
   cava \
-  rofi-bluetooth
+  rofi-bluetooth-git
 
 printf "${R} # All packages installed ${NC}\n"
 
