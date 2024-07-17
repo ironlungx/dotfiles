@@ -3,7 +3,7 @@ xorg-xinit
 xorg-xinput
 
 xmonad
-xmonad-contib
+xmonad-contrib
 xmonad-dbus
 
 stow
