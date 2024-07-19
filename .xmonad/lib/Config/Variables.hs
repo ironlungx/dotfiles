@@ -15,8 +15,7 @@ myExplorer    = "pcmanfm"
 myScreenshot  = "maim -u -s | xclip -selection clipboard -t image/png"
 myLock        = "i3lock-fancy -p -t \"\""
 
--- myRun        = "kitty --class=fzf-run -- ~/.scripts/fzf-run "
-myRun        = "rofi -show drun"
+myRun        = "rofi -show drun -config "
 
 myWallpaper   = "~/.wall/cat.png"
 myPowermenu   = "killall xinit"

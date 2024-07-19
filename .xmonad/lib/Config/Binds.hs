@@ -21,10 +21,10 @@ import Config.Scratchpads
 import Config.Variables
 
 
-myKeys = [ ("M-q",   spawn "kitty --class=XMonadRecomplie -- sh -c \'/usr/bin/xmonad --recompile || read -p  \"Press Enter to exit...\" cap\'" )
+myKeys themeName = [ ("M-q",   spawn $ (myTerminal ++ " --class=XMonadRecomplie -- sh -c \'/usr/bin/xmonad --recompile || read -p  \"Press Enter to exit...\" cap\'" ))
          , ("M-r",   spawn "xmonad --restart"   )
          , ("M-S-q", kill                       )
-         , ("M-p",   spawn myRun                )
+         , ("M-p",   spawn $ (myRun ++ "~/.config/rofi/" ++ themeName ++ "/config.rasi"))
          , ("M-S-p", spawn "rofi -show run")
          , ("M-S-z", spawn myLock               )
          , ("M-e",   spawn myExplorer           )
@@ -35,7 +35,7 @@ myKeys = [ ("M-q",   spawn "kitty --class=XMonadRecomplie -- sh -c \'/usr/bin/xm
          , ("M-<U>", windows W.focusUp)
          , ("M-<D>", windows W.focusDown)
          
-         , ("M-<Escape>",   spawn myPowermenu )
+         , ("M-<Escape>",   spawn "killall xinit" )
          , ("M-S-<Return>", spawn myTerminal  )
          , ("M-C-<Return>", spawn myBrowser   )
 

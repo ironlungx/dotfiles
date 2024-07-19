@@ -41,7 +41,7 @@ myConfig = def
     , XMonad.startupHook         = myStartupHook colorScheme
     , XMonad.manageHook          = myManageHook
     }
-    `additionalKeysP` myKeys
+    `additionalKeysP` (myKeys colorScheme)
 
 
 main :: IO ()

@@ -106,11 +106,23 @@ A `*` represents a change in the config.fish, just remove the aliases and source
 
 Continue to [Stowing](#stow)
 
+<a id="theming"></a>
+### Changing the rice theme!
+
+To change the color-scheme of the setup, edit `xmonad.hs`:
+
+```hs
+-- ...Other imports
+import Colors.THEME_NAME -- (GruvboxDark/CatppuccinFrappe)
+
+```
+And then recompile & restart XMonad (`Mod+q` + `Mod+r`)
+
 <a id="stow"></a>
 
 ### Stowing
 If you want to make life easy and updating dots easy, I recommend using `stow`.
-Before stowing the files, please ensure that all of your config files are backed up. Files in this repo are arranged as if they were in `~/` directory, so backup accordingly.
+Before stowing the files, **please ensure that all of your config files are backed up.** Files in this repo are arranged as if they were in `~/` directory, so backup accordingly.
 Once backed up execute the following:
 
 ```
