@@ -1,12 +1,1 @@
-configuration {
-    display-ssh:    "";
-    display-run:    "";
-    display-drun:   "";
-    display-window: "";
-    display-combi:  "";
-    display-clipboard: "";
-    show-icons:     true;
-}
-
-@theme "~/.config/rofi/themes/gruvbox.rasi"
-
+./catppuccin-frappe/config.rasi
