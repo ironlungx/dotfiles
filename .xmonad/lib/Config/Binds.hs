@@ -17,35 +17,36 @@ import XMonad.Util.NamedScratchpad
 
 import XMonad.Layout.ResizableTile
 
+import System.Exit
+
 import Config.Scratchpads
 import Config.Variables
 
 
 myKeys themeName = [ ("M-q",   spawn $ (myTerminal ++ " --class=XMonadRecomplie -- sh -c \'/usr/bin/xmonad --recompile || read -p  \"Press Enter to exit...\" cap\'" ))
-         , ("M-r",   spawn "xmonad --restart"   )
-         , ("M-S-q", kill                       )
+         , ("M-r",   spawn "xmonad --restart"                                           )
+         , ("M-S-q", kill                                                               )
          , ("M-p",   spawn $ (myRun ++ "~/.config/rofi/" ++ themeName ++ "/config.rasi"))
-         , ("M-S-p", spawn "rofi -show run")
-         , ("M-S-z", spawn myLock               )
-         , ("M-e",   spawn myExplorer           )
-         , ("M-v",   spawn greenclipRofi        )
+         , ("M-S-z", spawn myLock                                                       )
+         , ("M-e",   spawn myExplorer                                                   )
+         , ("M-v",   spawn greenclipRofi                                                )
 
-         , ("M-<L>", windows W.focusUp)
-         , ("M-<R>", windows W.focusDown)
-         , ("M-<U>", windows W.focusUp)
-         , ("M-<D>", windows W.focusDown)
+         , ("M-<L>", windows W.focusUp   )
+         , ("M-<R>", windows W.focusDown )
+         , ("M-<U>", windows W.focusUp   )
+         , ("M-<D>", windows W.focusDown )
          
-         , ("M-<Escape>",   spawn "killall xinit" )
-         , ("M-S-<Return>", spawn myTerminal  )
-         , ("M-C-<Return>", spawn myBrowser   )
+         , ("M-<Escape>",   io (exitWith ExitSuccess))
+         , ("M-S-<Return>", spawn myTerminal         )
+         , ("M-C-<Return>", spawn myBrowser          )
 
          , ("M-S-h", sendMessage MirrorExpand )
          , ("M-S-l", sendMessage MirrorShrink )
          
-         , ("M-a s",        namedScratchpadAction scratchpads "spt" )
-         , ("M-a d",        namedScratchpadAction scratchpads "dc"  )
-         , ("M-a c",        namedScratchpadAction scratchpads "dotconf")
-         , ("M-a <Return>", namedScratchpadAction scratchpads "term")
+         , ("M-a s",        namedScratchpadAction scratchpads "spt"     )
+         , ("M-a d",        namedScratchpadAction scratchpads "dc"      )
+         , ("M-a c",        namedScratchpadAction scratchpads "dotconf" )
+         , ("M-a <Return>", namedScratchpadAction scratchpads "term"    )
 
          , ("M-s p", spawn "~/.scripts/picom-toggle")
          

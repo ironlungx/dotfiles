@@ -18,6 +18,9 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Util.EZConfig 
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
+
+import qualified XMonad.DBus as D
+
 -- Custom Config modules
 import Config.Scratchpads
 import Config.Hooks
@@ -29,7 +32,7 @@ import Config.ColorSwitch
 -- import Colors.GruvboxDark
 import Colors.CatppuccinFrappe
 
-myConfig = def
+myConfig dbus = def
     { XMonad.terminal            = myTerminal
     , XMonad.modMask             = mod4Mask -- Super key
     , XMonad.focusFollowsMouse   = False 
@@ -40,16 +43,21 @@ myConfig = def
     , XMonad.layoutHook          = myLayoutHook
     , XMonad.startupHook         = myStartupHook colorScheme
     , XMonad.manageHook          = myManageHook
+    , XMonad.logHook             = dynamicLogWithPP (myLogHook dbus)
     }
     `additionalKeysP` (myKeys colorScheme)
 
 
 main :: IO ()
 main = do 
-  changeThemes colorScheme;
+  changeThemes colorScheme
+
+  dbus <- D.connect
+  D.requestAccess dbus
+
   xmonad 
     $ ewmhFullscreen 
     $ ewmh 
     $ docks 
-    $ myConfig
+    $ myConfig dbus
 

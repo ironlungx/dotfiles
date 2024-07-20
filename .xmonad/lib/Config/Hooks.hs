@@ -23,9 +23,9 @@ import XMonad.Layout.Gaps
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.DynamicLog
 
-import qualified DBus as D
-import qualified DBus.Client as D
-import qualified Codec.Binary.UTF8.String as UTF8
+import XMonad.Hooks.DynamicLog
+import qualified XMonad.DBus as D
+import qualified DBus.Client as DC
 
 import Config.Variables
 import Config.Scratchpads
@@ -33,13 +33,14 @@ import Config.Scratchpads
 myStartupHook themeName = do
     spawn "picom -b"
     spawn $ ("polybar --reload -c ~/.config/polybar/" ++ themeName ++ "/config.ini")
+
     spawn "xclip"
     spawn "xsetroot -cursor_name left_ptr"
-    -- spawnOnce "mpd ; mpd-mpris"
     spawnOnce "greenclip daemon"
+
     spawn "dunst"
     spawn $ "feh --bg-fill --no-fehbg " ++ myWallpaper
-    spawnOnce "sunshine"
+
     spawn "setxkbmap -layout us -option caps:ctrl_modifier"
 
 myLayoutHook = gaps [(U,5), (R,5), (L,5), (D, 39)] $ spacingWithEdge 5 
@@ -51,8 +52,7 @@ myLayoutHook = gaps [(U,5), (R,5), (L,5), (D, 39)] $ spacingWithEdge 5
     delta   = 3/100
 
 
-myManageHook = namedScratchpadManageHook scratchpads <>
-             composeAll 
+myManageHook = namedScratchpadManageHook scratchpads <> composeAll 
              [ ((className =? "XMonadRecomplie")  --> (doRectFloat $ W.RationalRect 0.25 0.25 0.5 0.5 ))
 
              , ((className =? "Steam")            --> doFloat     )
@@ -63,18 +63,21 @@ myManageHook = namedScratchpadManageHook scratchpads <>
 
              , (isDialog                          --> (doRectFloat $ W.RationalRect 0.25 0.25 0.5 0.5 )) ] 
 
+myLogHook :: DC.Client -> PP
+myLogHook dbus = def { 
+    ppOutput = D.send dbus 
+    
+-- Print icons based on the layout
+  , ppLayout = 
+        \layout -> case layout of
+          "Spacing ResizableTall"        -> "\985629 "
+          "Spacing Mirror ResizableTall" -> "\986732 "
+          "Spacing Full"                 -> "\986719 " 
+          _                              -> "\985629 "
 
-myLogHook :: D.Client -> PP
-myLogHook dbus = def { ppOutput = dbusOutput dbus }
-
--- Emit a DBus signal on log updates
-dbusOutput :: D.Client -> String -> IO ()
-dbusOutput dbus str = do
-    let signal = (D.signal objectPath interfaceName memberName) {
-            D.signalBody = [D.toVariant $ UTF8.decodeString str]
-        }
-    D.emit dbus signal
-  where
-    objectPath = D.objectPath_ "/org/xmonad/Log"
-    interfaceName = D.interfaceName_ "org.xmonad.Log"
-    memberName = D.memberName_ "Update"
+  -- Disable Everything apart from layout
+  , ppTitle   = const ""
+  , ppCurrent = const ""
+  , ppVisible = const "" 
+  , ppHidden  = const ""
+}

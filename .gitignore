@@ -1,3 +1,4 @@
 .xmonad/build-*
 .xmonad/xmonad-*
 .config/nvim/lazy-lock.json
+.config/greenclip.toml
