@@ -59,9 +59,6 @@ esac
 
 PACKAGES=$(for x in $(cat packagelist | sed  's/[ \t]*$//' | cut -d' ' -f1 ); do printf "$x " ; done)
 
-# printf "${R} # Installing packages : (xorg xorg-xinit xorg-xinput ${DRI} xmonad xmonad-contrib xmonad-dbus stow feh rofi picom dunst maim xclip polybar eza playerctl pcmanfm pulseaudio pulseaudio-alsa bat kitty) ${NC}\n"
-# sudo pacman -S --needed --noconfirm xorg xorg-xinit xorg-xinput $DRI xmonad xmonad-contrib xmonad-dbus stow feh rofi picom dunst maim xclip polybar eza playerctl pcmanfm bat kitty zoxide
-
 sudo pacman -S --needed $PACKAGES
 
 pause
@@ -100,6 +97,13 @@ printf "${R} # All packages installed ${NC}\n"
 pause
 clear
 
-printf "${R} To install the dotfiles, stow them by: cd dotfiles-dir && stow ."
+printf "${Y} Would you like to use fish as your default shell ${NC}? (Y/n)"
+read -r choice
 
-pause
+case "$choice" in
+  [Yy]) chsh -s /usr/bin/fish
+esac
+
+echo
+
+printf "${Y} Would you like to install dotfiles t"

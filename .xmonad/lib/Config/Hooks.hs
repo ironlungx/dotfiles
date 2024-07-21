@@ -15,8 +15,9 @@ import XMonad.StackSet as W
 import XMonad.Util.SpawnOnce (spawnOnce)
 import XMonad.Util.Run
 import XMonad.Util.NamedScratchpad
-import XMonad.Layout.ResizableTile
+import XMonad.Util.Run 
 
+import XMonad.Layout.ResizableTile
 import XMonad.Layout.Spacing
 import XMonad.Layout.Gaps
 
@@ -24,21 +25,19 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.DynamicLog
 
 import XMonad.Hooks.DynamicLog
-import qualified XMonad.DBus as D
-import qualified DBus.Client as DC
 
 import Config.Variables
 import Config.Scratchpads
 
 myStartupHook themeName = do
     spawn "picom -b"
-    spawn $ ("polybar --reload -c ~/.config/polybar/" ++ themeName ++ "/config.ini")
+    spawn $ ("polybar --reload -q -c ~/.config/polybar/" ++ themeName ++ "/config.ini")
 
     spawn "xclip"
     spawn "xsetroot -cursor_name left_ptr"
     spawnOnce "greenclip daemon"
 
-    spawn "dunst"
+    spawn $ "dunst -conf ~/.config/dunst/" ++ themeName
     spawn $ "feh --bg-fill --no-fehbg " ++ myWallpaper
 
     spawn "setxkbmap -layout us -option caps:ctrl_modifier"
@@ -55,17 +54,18 @@ myLayoutHook = gaps [(U,5), (R,5), (L,5), (D, 39)] $ spacingWithEdge 5
 myManageHook = namedScratchpadManageHook scratchpads <> composeAll 
              [ ((className =? "XMonadRecomplie")  --> (doRectFloat $ W.RationalRect 0.25 0.25 0.5 0.5 ))
 
-             , ((className =? "Steam")            --> doFloat     )
-             , ((className =? "steam")            --> doFullFloat )
-             , ((className =? "Steam")            --> doIgnore    )
+             , className =? "confirm"             --> doFloat
+             , className =? "file_progress"       --> doFloat
+             , className =? "dialog"              --> doFloat
+             , className =? "download"            --> doFloat
+             , className =? "error"               --> doFloat
 
-             , ((className =? "fzf-run")          --> (doRectFloat $ W.RationalRect 0.35 0.25 0.3 0.5 ))
+             , (isFullscreen                      --> doFullFloat)
+             ] 
 
-             , (isDialog                          --> (doRectFloat $ W.RationalRect 0.25 0.25 0.5 0.5 )) ] 
-
-myLogHook :: DC.Client -> PP
-myLogHook dbus = def { 
-    ppOutput = D.send dbus 
+myLogHook h = def { 
+    -- Pipe the output to cp
+    ppOutput = hPutStrLn h
     
 -- Print icons based on the layout
   , ppLayout = 

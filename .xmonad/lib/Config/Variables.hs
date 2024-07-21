@@ -13,6 +13,7 @@ myBrowser     = "librewolf"
 myEditor      = "kitty -- nvim"
 myExplorer    = "pcmanfm"
 myScreenshot  = "maim -u -s | xclip -selection clipboard -t image/png"
+myFlameshot   = "flameshot gui"
 myLock        = "i3lock-fancy -p -t \"\""
 
 myRun        = "rofi -show drun -config "

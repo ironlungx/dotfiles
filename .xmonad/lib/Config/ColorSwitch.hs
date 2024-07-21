@@ -5,7 +5,9 @@ import System.Directory
 
 changeNVimTheme themeName = do 
   homeDir <- getHomeDirectory
+  
   let configFile = homeDir ++ "/.config/nvim/lua/plugins/theme.lua"
+
   writeFile configFile $ ("return { require(\"plugins.themes." ++ themeName ++ "\") }")
 
 changeKittyTheme themeName = do 

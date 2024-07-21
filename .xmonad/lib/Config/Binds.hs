@@ -61,4 +61,5 @@ myKeys themeName = [ ("M-q",   spawn $ (myTerminal ++ " --class=XMonadRecomplie 
          , ("<XF86AudioNext>",        spawn "playerctl next"                            )
          
          , ("<Print>", spawn myScreenshot )
+         , ("S-<Print>", spawn myFlameshot )
          ]

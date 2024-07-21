@@ -14,12 +14,12 @@ import XMonad
 -- Hooks for Extended Window Manager Hints & Docks 
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
--- Keybinds
-import XMonad.Util.EZConfig 
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
 
-import qualified XMonad.DBus as D
+-- Keybinds
+import XMonad.Util.EZConfig 
+import XMonad.Util.Run 
 
 -- Custom Config modules
 import Config.Scratchpads
@@ -32,7 +32,7 @@ import Config.ColorSwitch
 -- import Colors.GruvboxDark
 import Colors.CatppuccinFrappe
 
-myConfig dbus = def
+myConfig h = def
     { XMonad.terminal            = myTerminal
     , XMonad.modMask             = mod4Mask -- Super key
     , XMonad.focusFollowsMouse   = False 
@@ -43,7 +43,7 @@ myConfig dbus = def
     , XMonad.layoutHook          = myLayoutHook
     , XMonad.startupHook         = myStartupHook colorScheme
     , XMonad.manageHook          = myManageHook
-    , XMonad.logHook             = dynamicLogWithPP (myLogHook dbus)
+    , XMonad.logHook             = dynamicLogWithPP (myLogHook h)
     }
     `additionalKeysP` (myKeys colorScheme)
 
@@ -52,12 +52,12 @@ main :: IO ()
 main = do 
   changeThemes colorScheme
 
-  dbus <- D.connect
-  D.requestAccess dbus
+  -- Pipe the output of logHook to cp, which writes to /tmp/xmlog
+  h <- spawnPipe "/usr/bin/cp /dev/stdin /tmp/xmlog"
 
   xmonad 
     $ ewmhFullscreen 
     $ ewmh 
     $ docks 
-    $ myConfig dbus
+    $ myConfig h
 

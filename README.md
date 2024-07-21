@@ -70,16 +70,18 @@ To install the configs [Stowing](#stow)
 ### General installation
 If you are on a non-arch based distro, install the following dependencies:
 - `Git`
-- `XMonad`, `XMonad Contrib` & `XMonad DBUs`
+- `XMonad` & `XMonad Contrib` 
 - Proper X11 setup
 - `stow`
+- `rofi` & `rofi-greenclip`
 - `picom`
 - `feh`
 - `dunst` 
 - `maim`
 - `xclip`
 - `polybar` 
-- `exa`
+- `eza`
+- `kitty`
 - JetBrains Mono Nerd Font
 - `playerctl`
 - [i3lock-fancy](https://github.com/meskarune/i3lock-fancy)
