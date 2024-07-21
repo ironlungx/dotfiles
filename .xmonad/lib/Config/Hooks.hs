@@ -34,7 +34,7 @@ import Config.Scratchpads
 
 myStartupHook themeName = do
     spawn "picom -b"
-    spawn $ ("polybar --reload -q -c ~/.config/polybar/" ++ themeName ++ "/config.ini")
+    spawn $ ("polybar main --reload -q -c ~/.config/polybar/" ++ themeName ++ "/config.ini")
 
     spawn "xclip"
     spawn "xsetroot -cursor_name left_ptr"
@@ -60,6 +60,7 @@ myLayoutHook =  tall
             $ avoidStruts $ gaps ([(U,5), (R,5), (L,5)])
             $ Mirror tiled
     monocle  = renamed [Replace "monocle"] 
+             $ spacingWithEdge 2
              $ avoidStruts
              $ Full
 
@@ -84,10 +85,10 @@ myLogHook h = def {
     
 -- Print icons based on the layout
   , ppLayout = 
-        \layout -> case layout of
-          "tall"     -> "\985629 "
-          "mTall"    -> "\986732 "
-          "monocle"  -> "\986719 " 
+        \layout      -> case layout of
+          "tall"     -> "\985629"
+          "mTall"    -> "\986732"
+          "monocle"  -> "\60405" 
           _          -> layout
 
   -- Disable Everything apart from layout
