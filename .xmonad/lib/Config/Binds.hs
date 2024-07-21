@@ -14,7 +14,7 @@ import XMonad
 import qualified XMonad.StackSet as W
 import XMonad.Util.Run
 import XMonad.Util.NamedScratchpad
-
+import XMonad.Hooks.ManageDocks
 import XMonad.Layout.ResizableTile
 
 import System.Exit
@@ -30,6 +30,8 @@ myKeys themeName = [ ("M-q",   spawn $ (myTerminal ++ " --class=XMonadRecomplie 
          , ("M-S-z", spawn myLock                                                       )
          , ("M-e",   spawn myExplorer                                                   )
          , ("M-v",   spawn greenclipRofi                                                )
+
+         , ("M-b", sendMessage ToggleStruts)
 
          , ("M-<L>", windows W.focusUp   )
          , ("M-<R>", windows W.focusDown )

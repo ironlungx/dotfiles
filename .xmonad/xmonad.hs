@@ -60,4 +60,3 @@ main = do
     $ ewmh 
     $ docks 
     $ myConfig h
-

@@ -20,9 +20,12 @@ import XMonad.Util.Run
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.Spacing
 import XMonad.Layout.Gaps
+import XMonad.Layout.Renamed
 
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.SetWMName
+import XMonad.Hooks.ManageDocks
 
 import XMonad.Hooks.DynamicLog
 
@@ -41,26 +44,38 @@ myStartupHook themeName = do
     spawn $ "feh --bg-fill --no-fehbg " ++ myWallpaper
 
     spawn "setxkbmap -layout us -option caps:ctrl_modifier"
+    setWMName "XMonad"
 
-myLayoutHook = gaps [(U,5), (R,5), (L,5), (D, 39)] $ spacingWithEdge 5 
-    (tiled ||| Mirror tiled ||| Full)
-  where
+myLayoutHook =  tall
+            ||| mTall
+            ||| monocle
+  where 
+    tall = renamed [Replace "tall"]
+         $ spacingWithEdge 5
+         $ avoidStruts $ gaps ([(U,5), (R,5), (L,5)])
+         $ tiled
+
+    mTall = renamed [Replace "mTall"] 
+            $ spacingWithEdge 5
+            $ avoidStruts $ gaps ([(U,5), (R,5), (L,5)])
+            $ Mirror tiled
+    monocle  = renamed [Replace "monocle"] 
+             $ avoidStruts
+             $ Full
+
     tiled   = ResizableTall nmaster delta ratio []
     nmaster = 1
     ratio   = 4/7
     delta   = 3/100
 
-
 myManageHook = namedScratchpadManageHook scratchpads <> composeAll 
              [ ((className =? "XMonadRecomplie")  --> (doRectFloat $ W.RationalRect 0.25 0.25 0.5 0.5 ))
-
              , className =? "confirm"             --> doFloat
              , className =? "file_progress"       --> doFloat
              , className =? "dialog"              --> doFloat
              , className =? "download"            --> doFloat
              , className =? "error"               --> doFloat
-
-             , (isFullscreen                      --> doFullFloat)
+             , checkDock                          --> doLower
              ] 
 
 myLogHook h = def { 
@@ -70,10 +85,10 @@ myLogHook h = def {
 -- Print icons based on the layout
   , ppLayout = 
         \layout -> case layout of
-          "Spacing ResizableTall"        -> "\985629 "
-          "Spacing Mirror ResizableTall" -> "\986732 "
-          "Spacing Full"                 -> "\986719 " 
-          _                              -> "\985629 "
+          "tall"     -> "\985629 "
+          "mTall"    -> "\986732 "
+          "monocle"  -> "\986719 " 
+          _          -> layout
 
   -- Disable Everything apart from layout
   , ppTitle   = const ""
