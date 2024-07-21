@@ -7,5 +7,6 @@ return {
     require("gruvbox").setup({
       terminal_colors = true,
     })
+    require"lualine".setup { theme = "gruvbox" }
   end,
 }
