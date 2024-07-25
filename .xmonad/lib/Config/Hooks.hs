@@ -37,13 +37,13 @@ myStartupHook themeName = do
     spawn $ ("polybar main --reload -q -c ~/.config/polybar/" ++ themeName ++ "/config.ini")
 
     spawn "xclip"
-    spawn "xsetroot -cursor_name left_ptr"
+    spawn "xsetroot -cursor_name Bibata-Modern-Ice"
     spawnOnce "greenclip daemon"
 
     spawn $ "dunst -conf ~/.config/dunst/" ++ themeName
     spawn $ "feh --bg-fill --no-fehbg " ++ myWallpaper
 
-    spawn "setxkbmap -layout us -option caps:ctrl_modifier"
+    spawn "setxkbmap -layout us -option caps:super"
     setWMName "XMonad"
 
 myLayoutHook =  tall
@@ -76,6 +76,8 @@ myManageHook = namedScratchpadManageHook scratchpads <> composeAll
              , className =? "dialog"              --> doFloat
              , className =? "download"            --> doFloat
              , className =? "error"               --> doFloat
+             , className =? "steam"               --> doFloat
+
              , checkDock                          --> doLower
              ] 
 

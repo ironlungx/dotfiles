@@ -51,7 +51,7 @@ main = do
   changeThemes colorScheme   -- Apply color settings for other programs
 
   -- Pipe the output of logHook to cp, which writes to /tmp/xmlog. Polybar reads the file and gets info
-  h <- spawnPipe "/usr/bin/cp /dev/stdin /tmp/xmlog"
+  h <- spawnPipe "/usr/bin/tee /tmp/xmlog"
 
   xmonad . addEwmhWorkspaceSort (pure (filterOutWs [scratchpadWorkspaceTag]))   -- Filter out the NSP workspace (The Named Scratchpad Workspace)
          . ewmhFullscreen 
