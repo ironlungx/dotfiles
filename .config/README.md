@@ -1,36 +1,15 @@
 # Most Config files live here
-[dunst](https://github.com/ironlungx/dotfiles/tree/main/.config/dunst): Notification manager
-[fish](https://github.com/ironlungx/dotfiles/tree/main/.config/fish): My goto shell
-
-<details>
-    <summary>[kitty](https://github.com/ironlungx/dotfiles/tree/main/.config/kitty): Terminal emulator that I use </summary> 
-
-    ![kitty with the CatppuccinFrappe theme](/screenshots/kitty/catppuccin-frappe.png)
-    ![kitty with the GruvboxDark theme](/screenshots/kitty/gruvbox-dark.png) 
-
-</details>
-
-<details>
-
-    <summary>nvim </summary>
-
-    The text editor I use (Neovim) 
-
-    [config](https://github.com/ironlungx/dotfiles/tree/main/.config/nvim)
-    ![nvim with the CatppuccinFrappe theme](/screenshots/nvim/catppuccin-frappe.png)
-    ![nvim with the GruvboxDark theme](/screenshots/nvim/gruvbox-dark.png)
-
-</details>
-
-<details>
-    <summary> [polybar](https://github.com/ironlungx/dotfiles/tree/main/.config/polybar): The system bar I use </summary>
-
-    ![polybar with the CatppuccinFrappe theme](/screenshots/polybar/catppuccin-frappe.png) 
-    ![polybar with the GruvboxDark theme](/screenshots/polybar/gruvbox-dark.png) 
-</details>
-
-<details>
-    <summary>[rofi](https://github.com/ironlungx/dotfiles/tree/main/.config/rofi): Menu framework </summary>
-
-    ![rofi with CatppuccinFrappe](/screenshots/rofi/catppuccin-frappe.png)
-</details>
+## Table of Contents
+- [dunst](https://github.com/ironlungx/dotfiles/tree/main/.config/dunst): Notification manager
+- [fish](https://github.com/ironlungx/dotfiles/tree/main/.config/fish): My goto shell
+- [kitty](https://github.com/ironlungx/dotfiles/tree/main/.config/kitty): Terminal emulator that I use 
+    - ![kitty with the CatppuccinFrappe theme](/screenshots/kitty/catppuccin-frappe.png)
+    - ![kitty with the GruvboxDark theme](/screenshots/kitty/gruvbox-dark.png) 
+- [nvim](https://github.com/ironlungx/dotfiles/tree/main/.config/nvim): The text editor I use (Neovim)
+    - ![nvim with the CatppuccinFrappe theme](/screenshots/nvim/catppuccin-frappe.png)
+    - ![nvim with the GruvboxDark theme](/screenshots/nvim/gruvbox-dark.png)
+- [polybar](https://github.com/ironlungx/dotfiles/tree/main/.config/polybar): The system bar I use
+    - ![polybar with the CatppuccinFrappe theme](/screenshots/polybar/catppuccin-frappe.png) 
+    - ![polybar with the GruvboxDark theme](/screenshots/polybar/gruvbox-dark.png) 
+- [rofi](https://github.com/ironlungx/dotfiles/tree/main/.config/rofi): Menu framework
+    - ![rofi with CatppuccinFrappe](/screenshots/rofi/catppuccin-frappe.png)
