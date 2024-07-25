@@ -8,6 +8,7 @@
     * [General Install](#gen-inst)
     * [Dependencies](#gen-inst)
     * [Optional Deps.](#opt-deps)
+    * [Theming](#theming)
     * [Stowing](#stow)
 
 <a id="info"></a>
@@ -119,6 +120,7 @@ import Colors.THEME_NAME -- (GruvboxDark/CatppuccinFrappe)
 
 ```
 And then recompile & restart XMonad (`Mod+q` + `Mod+r`)
+You can read more about how it works [here](https://github.com/ironlungx/dotfiles/tree/main/.xmonad)
 
 <a id="stow"></a>
 
