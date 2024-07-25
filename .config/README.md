@@ -11,14 +11,19 @@
 </details>
 
 <details>
-    <summary>[nvim](https://github.com/ironlungx/dotfiles/tree/main/.config/nvim): The text editor I use (Neovim) </summary>
 
-    - ![nvim with the CatppuccinFrappe theme](/screenshots/nvim/catppuccin-frappe.png)
-    - ![nvim with the GruvboxDark theme](/screenshots/nvim/gruvbox-dark.png)
+    <summary>nvim </summary>
+
+    The text editor I use (Neovim) 
+
+    [config](https://github.com/ironlungx/dotfiles/tree/main/.config/nvim)
+    ![nvim with the CatppuccinFrappe theme](/screenshots/nvim/catppuccin-frappe.png)
+    ![nvim with the GruvboxDark theme](/screenshots/nvim/gruvbox-dark.png)
+
 </details>
 
 <details>
-    <summary>[polybar](https://github.com/ironlungx/dotfiles/tree/main/.config/polybar): The system bar I use </summary>
+    <summary> [polybar](https://github.com/ironlungx/dotfiles/tree/main/.config/polybar): The system bar I use </summary>
 
     ![polybar with the CatppuccinFrappe theme](/screenshots/polybar/catppuccin-frappe.png) 
     ![polybar with the GruvboxDark theme](/screenshots/polybar/gruvbox-dark.png) 
