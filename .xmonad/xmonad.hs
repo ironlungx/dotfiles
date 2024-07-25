@@ -25,8 +25,11 @@ import Config.Binds
 import Config.Variables
 import Config.ColorSwitch
 
--- Color scheme (USE ONLY ONE)
--- import Colors.GruvboxDark
+-- Color scheme (USE ONLY ONE). Valid Themes:
+--      - Catppuccin Frappe
+--      - Gruvbox Dark
+
+-- import Colors.THEMENAME 
 import Colors.CatppuccinFrappe
 
 -- Config Block
