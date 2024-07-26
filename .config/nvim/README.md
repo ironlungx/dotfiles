@@ -35,4 +35,4 @@ For example if I choose `GruvboxDark` [here](https://github.com/ironlungx/dotfil
 ```lua
 return { require("plugins.themes.catppuccin-frappe") }
 ```
-you can read more about it [here](https://github.com/ironlungx/dotfiles/tree/main/.xmonad)
+you can read more about it [here](https://github.com/ironlungx/dotfiles/tree/main/.xmonad#theming)
