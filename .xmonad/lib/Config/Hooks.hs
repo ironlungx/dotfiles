@@ -21,6 +21,7 @@ import XMonad.Layout.ResizableTile
 import XMonad.Layout.Spacing
 import XMonad.Layout.Gaps
 import XMonad.Layout.Renamed
+import XMonad.Layout.NoBorders
 
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.DynamicLog
@@ -60,7 +61,8 @@ myLayoutHook =  tall
             $ avoidStruts $ gaps ([(U,5), (R,5), (L,5)])
             $ Mirror tiled
     monocle  = renamed [Replace "monocle"] 
-             $ spacingWithEdge 2
+             $ noBorders
+             -- $ spacingWithEdge 2
              $ avoidStruts
              $ Full
 
