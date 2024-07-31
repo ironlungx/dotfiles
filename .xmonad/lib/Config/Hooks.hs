@@ -22,11 +22,14 @@ import XMonad.Layout.Spacing
 import XMonad.Layout.Gaps
 import XMonad.Layout.Renamed
 import XMonad.Layout.NoBorders
+import XMonad.Layout.ShowWName
+import XMonad.Layout.Tabbed
 
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ShowWName
 
 import XMonad.Hooks.DynamicLog
 
@@ -35,7 +38,7 @@ import Config.Scratchpads
 
 myStartupHook themeName = do
     spawn "picom -b"
-    spawn $ ("polybar main --reload -q -c ~/.config/polybar/" ++ themeName ++ "/config.ini")
+    spawn $ ("killall polybar ; polybar main --reload -q -c ~/.config/polybar/" ++ themeName ++ "/config.ini")
 
     spawn "xclip"
     spawn "xsetroot -cursor_name Bibata-Modern-Ice"
@@ -47,9 +50,10 @@ myStartupHook themeName = do
     spawn "setxkbmap -layout us -option caps:super"
     setWMName "XMonad"
 
-myLayoutHook =  tall
+myLayoutHook = tall
             ||| mTall
             ||| monocle
+            ||| tabs
   where 
     tall = renamed [Replace "tall"]
          $ spacingWithEdge 5
@@ -65,11 +69,15 @@ myLayoutHook =  tall
              -- $ spacingWithEdge 2
              $ avoidStruts
              $ Full
+    tabs = renamed [Replace "tabs"] $ simpleTabbed
+
 
     tiled   = ResizableTall nmaster delta ratio []
     nmaster = 1
     ratio   = 4/7
     delta   = 3/100
+
+
 
 myManageHook = namedScratchpadManageHook scratchpads <> composeAll 
              [ ((className =? "XMonadRecomplie")  --> (doRectFloat $ W.RationalRect 0.25 0.25 0.5 0.5 ))
@@ -93,6 +101,7 @@ myLogHook h = def {
           "tall"     -> "\985629"
           "mTall"    -> "\986732"
           "monocle"  -> "\60405" 
+          "tabs"     -> "\60406"
           _          -> layout
 
   -- Disable Everything apart from layout

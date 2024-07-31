@@ -25,33 +25,29 @@ import Config.Binds
 import Config.Variables
 import Config.ColorSwitch
 
--- Color scheme (USE ONLY ONE). Valid Themes:
---      - Catppuccin Frappe
---      - Gruvbox Dark
-
--- import Colors.THEMENAME 
-import Colors.CatppuccinFrappe
+import Colors
+scheme = catppuccinFrappe
 
 -- Config Block
-myConfig h = def
+myConfig h colorScheme = def
     { XMonad.terminal            = myTerminal
     , XMonad.modMask             = mod4Mask -- Super key
     , XMonad.focusFollowsMouse   = False 
     , XMonad.borderWidth         = 1
-    , XMonad.normalBorderColor   = colorBack
-    , XMonad.focusedBorderColor  = accent
+    , XMonad.normalBorderColor   = (colorBack colorScheme)
+    , XMonad.focusedBorderColor  = (accent colorScheme)
     , XMonad.workspaces          = myWorkspaces
     , XMonad.layoutHook          = myLayoutHook
-    , XMonad.startupHook         = myStartupHook colorScheme
+    , XMonad.startupHook         = myStartupHook (themeName colorScheme)
     , XMonad.manageHook          = myManageHook
     , XMonad.logHook             = dynamicLogWithPP (myLogHook h)
     }
-    `additionalKeysP` (myKeys colorScheme)
+    `additionalKeysP` (myKeys (themeName colorScheme))
 
 
 main :: IO ()
 main = do 
-  changeThemes colorScheme   -- Apply color settings for other programs
+  changeThemes (themeName scheme)   -- Apply color settings for other programs
 
   -- Pipe the output of logHook to cp, which writes to /tmp/xmlog. Polybar reads the file and gets info
   h <- spawnPipe "/usr/bin/tee /tmp/xmlog"
@@ -60,4 +56,4 @@ main = do
          . ewmhFullscreen 
          . ewmh                                                                 -- Extended Window Manager Hints 
          . docks 
-         $ myConfig h                                                           -- This is where everything comes together
+         $ myConfig h scheme                                                          -- This is where everything comes together
