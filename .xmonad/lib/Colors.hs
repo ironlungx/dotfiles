@@ -1,5 +1,8 @@
 module Colors where
 
+import qualified Data.Map as Map
+import Data.Map (Map)
+
 -- Define a data type to represent the color scheme
 data ColorScheme = ColorScheme {
     themeName :: String,
@@ -71,3 +74,8 @@ gruvboxDark = ColorScheme {
     colorFore = "#ebdbb2", -- bright neutral
     accent    = "#689d6a"  -- aqua
 }
+
+colorSchemes :: Map String ColorScheme
+colorSchemes = Map.fromList [ ("catppuccin-frappe", catppuccinFrappe)
+                            , ("gruvbox-dark", gruvboxDark)
+                            ]

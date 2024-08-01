@@ -3,7 +3,6 @@
 -- \ \/ / '_ ` _ \ / _ \| '_ \ / _` |/ _` |
 --  >  <| | | | | | (_) | | | | (_| | (_| |
 -- /_/\_\_| |_| |_|\___/|_| |_|\__,_|\__,_|
-
 import XMonad
 
 -- Hooks
@@ -25,9 +24,12 @@ import Config.Binds
 import Config.Variables
 import Config.ColorSwitch
 
-import Colors
-scheme = catppuccinFrappe
+import System.IO
 
+import Colors
+
+import Data.Map (Map)
+import qualified Data.Map as Map
 -- Config Block
 myConfig h colorScheme = def
     { XMonad.terminal            = myTerminal
@@ -47,6 +49,9 @@ myConfig h colorScheme = def
 
 main :: IO ()
 main = do 
+
+  -- scheme <- loadLastTheme
+  let scheme = catppuccinFrappe
   changeThemes (themeName scheme)   -- Apply color settings for other programs
 
   -- Pipe the output of logHook to cp, which writes to /tmp/xmlog. Polybar reads the file and gets info
