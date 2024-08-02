@@ -39,7 +39,7 @@ myConfig h colorScheme = def
     , XMonad.normalBorderColor   = (colorBack colorScheme)
     , XMonad.focusedBorderColor  = (accent colorScheme)
     , XMonad.workspaces          = myWorkspaces
-    , XMonad.layoutHook          = myLayoutHook
+    , XMonad.layoutHook          = myLayoutHook colorScheme
     , XMonad.startupHook         = myStartupHook (themeName colorScheme)
     , XMonad.manageHook          = myManageHook
     , XMonad.logHook             = dynamicLogWithPP (myLogHook h)
@@ -50,8 +50,8 @@ myConfig h colorScheme = def
 main :: IO ()
 main = do 
 
-  -- scheme <- loadLastTheme
-  let scheme = catppuccinFrappe
+  scheme <- loadLastTheme
+  -- let scheme = catppuccinFrappe
   changeThemes (themeName scheme)   -- Apply color settings for other programs
 
   -- Pipe the output of logHook to cp, which writes to /tmp/xmlog. Polybar reads the file and gets info

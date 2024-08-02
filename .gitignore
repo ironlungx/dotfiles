@@ -3,3 +3,4 @@
 .config/nvim/lazy-lock.json
 .config/greenclip.toml
 .config/fish/completions/pio.fish
+.xmonad/prompt-history
