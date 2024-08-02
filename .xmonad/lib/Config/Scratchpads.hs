@@ -15,7 +15,7 @@ import XMonad.Util.NamedScratchpad
 
 scratchpads = [
     NS "spt"     "LD_PRELOAD=/usr//lib/spotify-adblock.so spotify"      (className =? "Spotify") center,
-    NS "dc"      "discord"                                              (className =? "discord") center,
+    NS "dc"      "discord"                                              (className =? "discord") centerBig,
     NS "term"    "kitty --class=scratchpadTerm"                         (className =? "scratchpadTerm") center,
 
     NS "dotconf" "kitty --class=dotconf -- sh -c \"cd ~/dotfiles/ ; nvim\""    (className =? "dotconf") centerBig
@@ -29,3 +29,4 @@ scratchpads = [
                      l = 0.85 -w
     centerSmall =  customFloating $ W.RationalRect 0.25 0.25 0.5 0.5
     centerBig   =  customFloating $ W.RationalRect 0.1  0.1  0.8 0.8
+    full        =  customFloating $ W.RationalRect 0    0    1 0.9 

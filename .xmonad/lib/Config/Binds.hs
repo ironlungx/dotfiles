@@ -21,6 +21,7 @@ import System.Exit
 
 import Config.Scratchpads
 import Config.Variables
+import Config.ColorSwitch
 
 
 myKeys themeName = [ ("M-q",   spawn $ (myTerminal ++ " --class=XMonadRecomplie -- sh -c \'/usr/bin/xmonad --recompile || read -p  \"Press Enter to exit...\" cap\'" ))

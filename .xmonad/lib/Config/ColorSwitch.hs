@@ -56,8 +56,8 @@ changeTheme c = do
     let themeN = themeName c
     writeFile themeFileLocation themeN
 
-promptForTheme :: X ()
-promptForTheme = liftIO $ do 
+-- promptForTheme :: X ()
+promptForTheme =  do 
   x <- spawnRofi
   case (Map.lookup x colorSchemes) of
     Just details -> changeTheme details

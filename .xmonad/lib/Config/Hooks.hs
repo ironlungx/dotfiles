@@ -24,6 +24,8 @@ import XMonad.Layout.Renamed
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ShowWName
 import XMonad.Layout.Tabbed
+import XMonad.Layout.Decoration
+import XMonad.Layout.Tabbed
 
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.DynamicLog
@@ -35,6 +37,7 @@ import XMonad.Hooks.DynamicLog
 
 import Config.Variables
 import Config.Scratchpads
+import Colors
 
 myStartupHook themeName = do
     spawn "picom -b"
@@ -48,9 +51,10 @@ myStartupHook themeName = do
     spawn $ "feh --bg-fill --no-fehbg " ++ myWallpaper
 
     spawn "setxkbmap -layout us -option caps:super"
+    spawn "/usr/lib/xfce-polkit/xfce-polkit"
     setWMName "XMonad"
 
-myLayoutHook = tall
+myLayoutHook colorScheme = tall
             ||| mTall
             ||| monocle
             ||| tabs
@@ -69,8 +73,18 @@ myLayoutHook = tall
              -- $ spacingWithEdge 2
              $ avoidStruts
              $ Full
-    tabs = renamed [Replace "tabs"] $ simpleTabbed
-
+    tabs = renamed [Replace "tabs"] 
+         $ avoidStruts $ gaps ([(U,5), (R,5), (L,5)])
+         $ tabbed shrinkText tabbedTheme
+  
+    tabbedTheme = def { fontName = "xft:Ubuntu:regular:size=10:antialias=true:hinting=true" 
+                      , activeColor = (color15 colorScheme)
+                      , inactiveColor = (color04 colorScheme)
+                      , activeBorderColor = (color15 colorScheme)
+                      , inactiveBorderColor = (colorBack colorScheme)
+                      , activeTextColor = (colorBack colorScheme)
+                      , inactiveTextColor = (color14 colorScheme)
+    }
 
     tiled   = ResizableTall nmaster delta ratio []
     nmaster = 1
