@@ -19,6 +19,7 @@ return {
       local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({})
       lspconfig.clangd.setup({})
+      lspconfig.hls.setup({})
       lspconfig.jedi_language_server.setup {}
     end,
     keys = {
