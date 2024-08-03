@@ -51,7 +51,7 @@ myStartupHook themeName = do
     spawn $ "feh --bg-fill --no-fehbg " ++ myWallpaper
 
     spawn "setxkbmap -layout us -option caps:super"
-    spawn "/usr/lib/xfce-polkit/xfce-polkit"
+    spawnOnce "/usr/lib/xfce-polkit/xfce-polkit"
     setWMName "XMonad"
 
 myLayoutHook colorScheme = tall
@@ -115,7 +115,7 @@ myLogHook h = def {
           "tall"     -> "\985629"
           "mTall"    -> "\986732"
           "monocle"  -> "\60405" 
-          "tabs"     -> "\60406"
+          "tabs"     -> "\984297"
           _          -> layout
 
   -- Disable Everything apart from layout

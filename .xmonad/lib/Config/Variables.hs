@@ -9,9 +9,9 @@
 module Config.Variables where 
 
 myTerminal    = "kitty"
-myBrowser     = "librewolf"
+myBrowser     = "firefox"
 myEditor      = "kitty -- nvim"
-myExplorer    = "pcmanfm"
+myExplorer    = "pcmanfm-qt"
 myScreenshot  = "maim -u -s | xclip -selection clipboard -t image/png"
 myFlameshot   = "flameshot gui"
 myLock        = "i3lock-fancy -p -t \"\""
