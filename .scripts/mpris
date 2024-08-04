@@ -1,0 +1,3 @@
+#! /usr/bin/bash
+
+zscroll -l 30 '$(playerctl metadata -f {{title}})'

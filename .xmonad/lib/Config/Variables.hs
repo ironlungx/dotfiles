@@ -14,7 +14,7 @@ myEditor      = "kitty -- nvim"
 myExplorer    = "pcmanfm-qt"
 myScreenshot  = "maim -u -s | xclip -selection clipboard -t image/png"
 myFlameshot   = "flameshot gui"
-myLock        = "i3lock-fancy -p -t \"\""
+myLock        = "i3lock-fancy -t \"\""
 
 myRun        = "rofi -show drun -config "
 

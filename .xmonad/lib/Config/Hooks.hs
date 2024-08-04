@@ -103,6 +103,8 @@ myManageHook = namedScratchpadManageHook scratchpads <> composeAll
              , className =? "steam"               --> doFloat
 
              , checkDock                          --> doLower
+             , title     =? "polybar-infobar"     --> doRaise
+             
              ] 
 
 myLogHook h = def { 
