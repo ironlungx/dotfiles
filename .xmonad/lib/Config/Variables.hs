@@ -18,7 +18,7 @@ myLock        = "i3lock-fancy -p -t \"\""
 
 myRun        = "rofi -show drun -config "
 
-myWallpaper   = "~/.wall/cat.png"
+myWallpaper   = "~/.wall/bg_15.jpg"
 myPowermenu   = "killall xinit"
 myWorkspaces  = ["1", "2", "3", "4", "5"]
 greenclipRofi = "rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}'"
