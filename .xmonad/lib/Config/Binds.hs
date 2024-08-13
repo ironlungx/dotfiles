@@ -51,7 +51,9 @@ myKeys themeName = [ ("M-q",   spawn $ (myTerminal ++ " --class=XMonadRecomplie 
                    , ("M-a c",        namedScratchpadAction scratchpads "dotconf" )
                    , ("M-a <Return>", namedScratchpadAction scratchpads "term"    )
           
-                   , ("M-s p", spawn "~/.scripts/picom-toggle")
+                   , ("M-s p", spawn "~/.scripts/picom-toggle" )
+                   , ("M-s b", spawn "rofi-bluetooth"          )
+                   , ("M-s e", spawn "rofi -show emoji"        )
                    
                    , ("M-z", spawn "playerctl play-pause" )
                    , ("M-c", spawn myEditor               )

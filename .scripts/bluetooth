@@ -19,7 +19,9 @@ bluetooth_print() {
           device_battery_percent=$(echo "$device_info" | grep "Battery Percentage" | awk -F'[()]' '{print $2}')
 
           if [ -n "$device_battery_percent" ]; then
-            if [ "$device_battery_percent" -ge 90 ]; then
+            if [ "$device_battery_percent" -ge 100 ]; then
+              device_battery_icon="󰁹"
+            elif [ "$device_battery_percent" -ge 90 ]; then
               device_battery_icon="󰂂"
             elif [ "$device_battery_percent" -ge 80 ]; then
               device_battery_icon="󰂁"

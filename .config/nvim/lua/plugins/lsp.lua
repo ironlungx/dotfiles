@@ -15,12 +15,13 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+
     config = function()
       local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({})
       lspconfig.clangd.setup({})
       lspconfig.hls.setup({})
-      lspconfig.jedi_language_server.setup {}
+      lspconfig.basedpyright.setup({})
     end,
     keys = {
       { "<leader>la", "<cmd> lua vim.lsp.buf.code_action() <cr>",           desc = "Code Actions" },
@@ -29,7 +30,7 @@ return {
       { "<leader>li", "<cmd> lua vim.lsp.buf.implementation() <cr>",        desc = "Implementation" },
       { "<leader>lk", "<cmd> lua vim.lsp.buf.hover() <cr>",                 desc = "Hover" },
       { "<leader>lr", "<cmd> lua vim.lsp.buf.rename() <cr>",                desc = "Rename Symbol" },
-    }
+    },
   },
   {
     "folke/trouble.nvim",
@@ -52,5 +53,5 @@ return {
         desc = "Quickfix List (Trouble)",
       },
     },
-  }
+  },
 }
