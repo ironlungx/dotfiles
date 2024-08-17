@@ -30,3 +30,8 @@ noto-fonts-emoji
 ttf-ubuntu-font-family
 feh
 jq
+
+lxappearance 
+rofi-emoji 
+unzip 
+python-distutils-extra
