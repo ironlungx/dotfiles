@@ -25,7 +25,6 @@ else
 fi
 echo "Selected AUR helper: $HELPER"
 
-set -e
 # Update system
 printf "${R}# Updating your system (sudo pacman -Syu)${NC}\n"
 sudo pacman --noconfirm -Syu
