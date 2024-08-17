@@ -13,12 +13,11 @@ pause() {
   printf "\r"
 }
 
-set -e
 printf "${R}# Hello there, looks like you want to yoink my dots. :D ${NC}\n"
 sleep 2
 
 # Select AUR helper using whiptail
-whiptail --title "Select AUR Helper" --yes-button "paru" --no-button "yay" --yesno "Choose your AUR helper" 10 50
+whiptail --title "Select AUR Helper" --yes-button "paru" --no-button "yay" --yesno "Choose your AUR helper" 10 50 3>&1 1>&2 2>&3
 if [ $? -eq 0 ]; then
     HELPER="paru"
 else
@@ -26,6 +25,7 @@ else
 fi
 echo "Selected AUR helper: $HELPER"
 
+set -e
 # Update system
 printf "${R}# Updating your system (sudo pacman -Syu)${NC}\n"
 sudo pacman --noconfirm -Syu
