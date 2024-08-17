@@ -97,7 +97,7 @@ Following are dependencies that can be changed to alternative programs in [Varia
 | `fish`                    | *None*                               | :heavy_check_mark: |
 | `kitty`                   | `myTerminal`                         | :heavy_check_mark: |
 | `neovim`                  | `myEditor`                           |                    |
-| `thunar`                  | `myExplorer`                         |                    |
+| `pcmanfm`                 | `myExplorer`                         |                    |
 | `maim`                    | `myScreenshot`                       | :heavy_check_mark: |
 | `i3lock-fancy`            | `myLock`                             |                    |
 | `rofi` & `rofi-greenclip` | `myRun`                              | :heavy_check_mark: |
@@ -111,6 +111,8 @@ Continue to [Stowing](#stow)
 
 <a id="theming"></a>
 ### Changing the rice theme!
+
+okay this part keeps changing all the time. so by the time you are reading this, the method might be different
 
 To change the color-scheme of the setup, edit `xmonad.hs`:
 
