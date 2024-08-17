@@ -25,7 +25,12 @@ sudo pacman --noconfirm -Syu
 
 pause
 
-printf "${R} # Installing base packages (base-devel, wget, git) ${NC}\n"
+printf "${R}# Installing libnewt on your system${NC}\n"
+echo
+sudo pacman -S --noconfirm libnewt
+pause
+
+printf "${R}# Installing base packages (base-devel, wget, git) ${NC}\n"
 sudo pacman --noconfirm --needed -S base-devel wget git
 
 echo
@@ -33,50 +38,68 @@ echo
 printf "${R} # Video driver${NC}"
 echo 
 
-echo "1) xf86-video-intel 	2) xf86-video-amdgpu 3) nvidia 4) Skip"
-read -r -p "Choose you video card driver(default 4)(will not re-install): " vid
+# echo "1) xf86-video-intel 	2) xf86-video-amdgpu 3) nvidia 4) Skip"
+# read -r -p "Choose you video card driver(default 4)(will not re-install): " vid
 
-case $vid in 
-[1])
-	DRI='xf86-video-intel'
-	;;
+vid=$(whiptail --title "Graphics Driver" --menu "Choose a graphics driver for your system" 25 60 16 \
+             "xf86-video-intel" "Intel drivers" \
+             "xf86-video-amdgpu" "AMD drivers" \
+             "nvidia nvidia-settings nvidia-utils" "Nvidia drivers" \
+             "Skip" "No drivers" 3>&1 1>&2 2>&3 )
 
-[2])
-	DRI='xf86-video-amdgpu'
-	;;
+if [ "$vid" = "Skip" ]; then 
+  vid="" 
+fi
 
-[3])
-    DRI='nvidia nvidia-settings nvidia-utils'
-    ;;
-
-[4])
-	DRI=""
-	;;
-[*])
-	DRI=''
-	;;
-esac
 
 PACKAGES=$(for x in $(cat packagelist | sed  's/[ \t]*$//' | cut -d' ' -f1 ); do printf "$x " ; done)
+PKG_PROMPT=$(for x in $PACKAGES ; do printf "    - $x\n"; done)
+
+whiptail --title "Packages from standard repo" --yesno "The following packages will be installed would you like to proceed?\n$PKG_PROMPT" 25 75 
+
+exitstatus=$?
+
+exitstatus=$?
+if [ $exitstatus = 0 ]; then
+  echo "ok"
+else
+  echo "User canceled input."
+fi
 
 sudo pacman -S --needed $PACKAGES
 
 pause
 clear
 
-printf "${R} # Packages have been installed${NC}\n"
-printf "${R} # AUR helper ${NC}\n"
+# printf "${R} # Packages have been installed${NC}\n"
+# printf "${R} # AUR helper ${NC}\n"
+#
+#
+# printf "${Y}We need an AUR helper. It is essential. 1) paru       2) yay\nWhat is the AUR helper of your choice? (default is paru): ${NC}"
+# read -r num
+#
+# echo
+#
+# if [ $num -eq 2 ]
+# then
+#     HELPER="yay"
+# fi
 
+# Show a message that packages have been installed
+whiptail --title "Packages Installed" --msgbox "${R}Packages have been installed${NC}" 8 50
 
-printf "${Y}We need an AUR helper. It is essential. 1) paru       2) yay\nWhat is the AUR helper of your choice? (default is paru): ${NC}"
-read -r num
+# Display a yes/no style dialog with "yay" as "Yes" and "paru" as "No"
+whiptail --title "AUR Helper Selection" --yesno "${Y}Choose your AUR helper:${NC}\nYes -> yay\nNo -> paru" 10 60 --yes-button "yay" --no-button "paru"
 
-echo
-
-if [ $num -eq 2 ]
-then
+# Set the AUR helper based on the user's choice
+if [ $? -eq 0 ]; then
     HELPER="yay"
+else
+    HELPER="paru"
 fi
+
+# Echo the chosen AUR helper
+echo "Selected AUR helper: $HELPER"
 
 if ! command -v $HELPER &> /dev/null
 then

@@ -101,6 +101,8 @@ myManageHook = namedScratchpadManageHook scratchpads <> composeAll
              , className =? "download"            --> doFloat
              , className =? "error"               --> doFloat
              , className =? "steam"               --> doFloat
+             , className =? "Xfce-polkit"               --> doFloat
+
 
              , checkDock                          --> doLower
              , title     =? "polybar-infobar"     --> doRaise
