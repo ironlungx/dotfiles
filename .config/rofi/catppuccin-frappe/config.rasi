@@ -15,5 +15,5 @@ configuration{
     sidebar-mode: true;
 }
 
-@theme "~/.config/rofi/themes/catppuccin-frappe"
+@theme "./catppuccin-frappe.rasi"
 

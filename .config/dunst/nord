@@ -1,0 +1,33 @@
+[global]
+    font = Iosevka 8
+    frame_width = 2
+    separator_height = 2
+    padding = 10
+    horizontal_padding = 20
+    vertical_padding = 10
+    line_height = 0
+    border_color = "#4c566a"
+    transparency = 5
+    corner_radius = 6
+
+[urgency_low]
+    background = "#434c5e"
+    foreground = "#d8dee9"
+    frame_color = "#434c5e"
+
+[urgency_normal]
+    background = "#3b4252"
+    foreground = "#eceff4"
+    frame_color = "#81a1c1"
+
+[urgency_critical]
+    background = "#bf616a"
+    foreground = "#eceff4"
+    frame_color = "#bf616a"
+
+# Customize progress bar, separator, and other elements
+[experimental]
+    transparency = 10
+    corner_radius = 6
+
+

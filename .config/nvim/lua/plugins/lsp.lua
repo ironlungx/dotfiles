@@ -21,7 +21,9 @@ return {
       lspconfig.lua_ls.setup({})
       lspconfig.clangd.setup({})
       lspconfig.hls.setup({})
-      lspconfig.basedpyright.setup({})
+      lspconfig.pyright.setup({})
+      lspconfig.ruff_lsp.setup({})
+      -- lspconfig.jedi_language_server.setup({})
     end,
     keys = {
       { "<leader>la", "<cmd> lua vim.lsp.buf.code_action() <cr>",           desc = "Code Actions" },

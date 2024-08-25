@@ -1,0 +1,28 @@
+configuration {
+    modi: "run,drun,emoji";
+    icon-theme: "Oranchelo";
+    font: "JetBrainsMono Nerd Font 14";
+    line-margin: 10;
+    terminal: "kitty";
+    drun-display-format: "{icon} {name}";
+    sidebar-mode: true;
+
+    display-ssh:    "";
+    display-run:    "";
+    display-drun:   "";
+    display-window: "";
+    display-combi:  "";
+    show-icons:     true;
+}
+
+
+@theme "./nord.rasi"
+
+listview {
+	lines: 6;
+	columns: 2;
+}
+
+window {
+	width: 30%;
+}

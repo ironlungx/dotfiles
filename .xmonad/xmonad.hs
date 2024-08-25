@@ -50,8 +50,7 @@ myConfig h colorScheme = def
 main :: IO ()
 main = do 
 
-  scheme <- loadLastTheme
-  -- let scheme = catppuccinFrappe
+  let scheme = catppuccinFrappe
   changeThemes (themeName scheme)   -- Apply color settings for other programs
 
   -- Pipe the output of logHook to cp, which writes to /tmp/xmlog. Polybar reads the file and gets info

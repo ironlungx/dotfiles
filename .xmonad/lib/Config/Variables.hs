@@ -18,7 +18,7 @@ myLock        = "betterlockscreen -l"
 
 myRun        = "rofi -show drun -config "
 
-myWallpaper   = "~/.wall/bg_15.jpg"
+myWallpaper   = "~/.wall/snow.jpg"
 myPowermenu   = "killall xinit"
 myWorkspaces  = ["1", "2", "3", "4", "5"]
 greenclipRofi = "rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}'"

@@ -47,7 +47,8 @@ myKeys themeName = [ ("M-q",   spawn $ (myTerminal ++ " --class=XMonadRecomplie 
                    , ("M-S-l", sendMessage MirrorShrink )
                    
                    , ("M-a s",        namedScratchpadAction scratchpads "spt"     )
-                   , ("M-a d",        namedScratchpadAction scratchpads "dc"      )
+                   -- , ("M-a d",        namedScratchpadAction scratchpads "dc"      )
+                   , ("M-a d",        namedScratchpadAction scratchpads "vc"      )
                    , ("M-a c",        namedScratchpadAction scratchpads "dotconf" )
                    , ("M-a <Return>", namedScratchpadAction scratchpads "term"    )
           
@@ -56,7 +57,6 @@ myKeys themeName = [ ("M-q",   spawn $ (myTerminal ++ " --class=XMonadRecomplie 
                    , ("M-s e", spawn "rofi -show emoji"        )
                    
                    , ("M-z", spawn "playerctl play-pause" )
-                   , ("M-c", spawn myEditor               )
                    
                    , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -10%" )
                    , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +10%" )
@@ -65,6 +65,6 @@ myKeys themeName = [ ("M-q",   spawn $ (myTerminal ++ " --class=XMonadRecomplie 
                    , ("<XF86AudioPrev>",        spawn "playerctl previous"                        )
                    , ("<XF86AudioNext>",        spawn "playerctl next"                            )
                    
-                   , ("<Print>", spawn myScreenshot )
+                   , ("M-S-s", spawn myFlameshot )
                    , ("S-<Print>", spawn myFlameshot )
                    ]

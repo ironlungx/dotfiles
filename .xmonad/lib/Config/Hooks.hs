@@ -52,6 +52,9 @@ myStartupHook themeName = do
 
     spawn "setxkbmap -layout us -option caps:super"
     spawnOnce "/usr/lib/xfce-polkit/xfce-polkit"
+
+    spawnOnce "devmon --exec-on-drive \"notify-send \"New USB storage connected\" \"A new USB device %l was detected\nMount point: %d\"\""
+
     setWMName "XMonad"
 
 myLayoutHook colorScheme = tall
