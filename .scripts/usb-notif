@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# init_devs=`lsblk -dn | wc -l`
+init_devs=1
+
+# Function to check if a USB storage device is connected
+check_usb_device() {
+  devs=`lsblk -dn | wc -l`
+
+  if [[ devs -ne init_devs ]]; then
+    polybar-msg action usb module_show foo
+    notify-send "New USB device connected"
+
+    while [[ devs -ne init_devs ]]; do 
+      devs=`lsblk -dn | wc -l`
+      sleep 0.5
+    done
+  else 
+    polybar-msg action usb module_hide
+    while [[ devs -eq init_devs ]]; do 
+      devs=`lsblk -dn | wc -l`
+      sleep 0.5
+    done  fi
+}
+
+# Set up a loop to continuously check for USB device connection
+while true; do
+  check_usb_device
+  sleep 1
+done
