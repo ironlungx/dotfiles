@@ -56,7 +56,8 @@ return {
           { name = "luasnip" },  -- snippets
           { name = "buffer" },   -- text within current buffer
           { name = "path" },     -- file system paths
-          { name = "fonts", option = { space_filter = "-" } }
+          { name = "fonts", option = { space_filter = "-" } },
+          { name = 'nvim_lsp_signature_help' }
         }),
       })
       cmp.setup.cmdline('/', {

@@ -4,3 +4,4 @@
 .config/greenclip.toml
 .config/fish/completions/pio.fish
 .xmonad/prompt-history
+.xmonad/xmonad.errors

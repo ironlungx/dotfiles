@@ -9,6 +9,8 @@
     transparency = 5
     corner_radius = 6
     dmenu = /usr/bin/rofi -dmenu
+    origin = bottom-center
+
 
 [urgency_low]
     background = "#303446"

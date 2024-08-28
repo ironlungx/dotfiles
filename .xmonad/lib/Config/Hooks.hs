@@ -62,22 +62,24 @@ myLayoutHook colorScheme = tall
             ||| monocle
             ||| tabs
   where 
+    gap = [(U,3), (R,3), (L,3)]
     tall = renamed [Replace "tall"]
-         $ spacingWithEdge 5
-         $ avoidStruts $ gaps ([(U,5), (R,5), (L,5)])
+         $ spacingWithEdge 3
+         $ avoidStruts $ gaps (gap)
          $ tiled
 
     mTall = renamed [Replace "mTall"] 
-            $ spacingWithEdge 5
-            $ avoidStruts $ gaps ([(U,5), (R,5), (L,5)])
+            $ spacingWithEdge 3
+            $ avoidStruts $ gaps (gap)
             $ Mirror tiled
     monocle  = renamed [Replace "monocle"] 
              $ noBorders
-             -- $ spacingWithEdge 2
+             $ spacingWithEdge 3
+             -- $ gaps [(D,4)]
              $ avoidStruts
              $ Full
     tabs = renamed [Replace "tabs"] 
-         $ avoidStruts $ gaps ([(U,5), (R,5), (L,5)])
+         $ avoidStruts $ gaps (gap)
          $ tabbed shrinkText tabbedTheme
   
     tabbedTheme = def { fontName = "xft:Ubuntu:regular:size=10:antialias=true:hinting=true" 
@@ -107,14 +109,15 @@ myManageHook = namedScratchpadManageHook scratchpads <> composeAll
              , className =? "Xfce-polkit"               --> doFloat
 
 
-             , checkDock                          --> doLower
+             -- , checkDock                          --> doLower
              , title     =? "polybar-infobar"     --> doRaise
              
              ] 
 
-myLogHook h = def { 
+myLogHook file = def { 
     -- Pipe the output to cp
-    ppOutput = hPutStrLn h
+    -- ppOutput = hPutStrLn h
+    ppOutput = writeFile file
     
 -- Print icons based on the layout
   , ppLayout = 

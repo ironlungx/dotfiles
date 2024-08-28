@@ -56,14 +56,13 @@ changeTheme c = do
     let themeN = themeName c
     writeFile themeFileLocation themeN
 
--- promptForTheme :: X ()
-promptForTheme =  do 
-  x <- spawnRofi
-  case (Map.lookup x colorSchemes) of
-    Just details -> changeTheme details
+promptForTheme :: X ()
+promptForTheme = do
+  x <- liftIO spawnRofi
+  case Map.lookup x colorSchemes of
+    Just details -> do
+      liftIO $ changeTheme details
     Nothing -> return ()
-  spawn "xmonad --restart"
-
 
 runRofi :: IO (Maybe String)
 runRofi = do
@@ -72,6 +71,7 @@ runRofi = do
 
 spawnRofi = do
   mbSelected <- runRofi
+  liftIO $ writeFile "/tmp/foo" mbSelected
   case mbSelected of
       Just theme -> return theme
       Nothing -> return ""  -- No theme selected or dmenu was canceled

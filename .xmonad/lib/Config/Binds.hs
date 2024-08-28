@@ -16,6 +16,7 @@ import XMonad.Util.Run
 import XMonad.Util.NamedScratchpad
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.ResizableTile
+import XMonad.Actions.Navigation2D
 
 import System.Exit
 
@@ -33,18 +34,28 @@ myKeys themeName = [ ("M-q",   spawn $ (myTerminal ++ " --class=XMonadRecomplie 
                    , ("M-v",   spawn greenclipRofi                                                )
           
                    , ("M-b", sendMessage ToggleStruts)
-          
-                   , ("M-<L>", windows W.focusUp   )
-                   , ("M-<R>", windows W.focusDown )
-                   , ("M-<U>", windows W.focusUp   )
-                   , ("M-<D>", windows W.focusDown )
                    
                    , ("M-<Escape>",   io (exitWith ExitSuccess))
+
                    , ("M-S-<Return>", spawn myTerminal         )
                    , ("M-C-<Return>", spawn myBrowser          )
           
-                   , ("M-S-h", sendMessage MirrorExpand )
-                   , ("M-S-l", sendMessage MirrorShrink )
+
+---------------------------------------------------------------------------------------
+-- Vim style navigation keys
+---------------------------------------------------------------------------------------
+                   , ("M-h", windowGo L False)
+                   , ("M-j", windowGo D False)
+                   , ("M-k", windowGo U False)
+                   , ("M-l", windowGo R False)
+
+---------------------------------------------------------------------------------------
+-- Vim style resizing keys
+---------------------------------------------------------------------------------------
+                   , ("M-S-h", sendMessage Shrink)
+                   , ("M-S-j", sendMessage MirrorShrink)
+                   , ("M-S-k", sendMessage MirrorExpand)
+                   , ("M-S-l", sendMessage Expand)
                    
                    , ("M-a s",        namedScratchpadAction scratchpads "spt"     )
                    -- , ("M-a d",        namedScratchpadAction scratchpads "dc"      )
@@ -57,6 +68,7 @@ myKeys themeName = [ ("M-q",   spawn $ (myTerminal ++ " --class=XMonadRecomplie 
                    , ("M-s e", spawn "rofi -show emoji"        )
                    
                    , ("M-z", spawn "playerctl play-pause" )
+                   , ("M-y", promptForTheme)
                    
                    , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -10%" )
                    , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +10%" )
