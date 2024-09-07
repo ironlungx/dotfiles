@@ -26,6 +26,8 @@ import Config.Binds
 import Config.Variables
 import Config.ColorSwitch
 
+import XMonad.Actions.Navigation2D
+
 import System.IO
 
 import Colors
@@ -47,7 +49,7 @@ myConfig f colorScheme = def
     , XMonad.logHook             = dynamicLogWithPP (myLogHook f)
     }
     `additionalKeysP` (myKeys (themeName colorScheme))
-
+    `removeKeysP` [ ("M-<Space>")]
 
 main :: IO ()
 main = do 
