@@ -9,7 +9,7 @@
 module Config.Variables where 
 
 myTerminal    = "kitty"
-myBrowser     = "firefox"
+myBrowser     = "qutebrowser"
 myEditor      = "kitty -- nvim"
 myExplorer    = "pcmanfm-qt"
 myScreenshot  = "maim -u -s | xclip -selection clipboard -t image/png"
@@ -18,7 +18,7 @@ myLock        = "betterlockscreen -l"
 
 myRun        = "rofi -show drun -config "
 
-myWallpaper   = "~/.wall/snow.jpg"
+myWallpaper   = "~/.wall/evening-sky.png"
 myPowermenu   = "killall xinit"
 myWorkspaces  = ["1", "2", "3", "4", "5"]
 greenclipRofi = "rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}'"

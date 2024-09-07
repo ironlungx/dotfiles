@@ -71,7 +71,6 @@ runRofi = do
 
 spawnRofi = do
   mbSelected <- runRofi
-  liftIO $ writeFile "/tmp/foo" mbSelected
   case mbSelected of
       Just theme -> return theme
       Nothing -> return ""  -- No theme selected or dmenu was canceled

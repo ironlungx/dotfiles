@@ -23,11 +23,14 @@ import System.Exit
 import Config.Scratchpads
 import Config.Variables
 import Config.ColorSwitch
+import Config.Hooks
 
 
 myKeys themeName = [ ("M-q",   spawn $ (myTerminal ++ " --class=XMonadRecomplie -- sh -c \'/usr/bin/xmonad --recompile || read -p  \"Press Enter to exit...\" cap\'" ))
                    , ("M-r",   spawn "xmonad --restart"                                           )
+
                    , ("M-S-q", kill                                                               )
+
                    , ("M-p",   spawn $ (myRun ++ "~/.config/rofi/" ++ themeName ++ "/config.rasi"))
                    , ("M-S-z", spawn myLock                                                       )
                    , ("M-e",   spawn myExplorer                                                   )
@@ -39,7 +42,10 @@ myKeys themeName = [ ("M-q",   spawn $ (myTerminal ++ " --class=XMonadRecomplie 
 
                    , ("M-S-<Return>", spawn myTerminal         )
                    , ("M-C-<Return>", spawn myBrowser          )
-          
+
+                   , (("M-u"), sendMessage NextLayout)
+                   , (("M-S-u"), sendMessage $ JumpToLayout "tall")
+ 
 
 ---------------------------------------------------------------------------------------
 -- Vim style navigation keys
@@ -56,7 +62,15 @@ myKeys themeName = [ ("M-q",   spawn $ (myTerminal ++ " --class=XMonadRecomplie 
                    , ("M-S-j", sendMessage MirrorShrink)
                    , ("M-S-k", sendMessage MirrorExpand)
                    , ("M-S-l", sendMessage Expand)
-                   
+
+---------------------------------------------------------------------------------------
+-- Vim style shifting keys
+---------------------------------------------------------------------------------------
+                   , ("M-C-h", windowSwap L False)
+                   , ("M-C-j", windowSwap D False)
+                   , ("M-C-k", windowSwap U False)
+                   , ("M-C-l", windowSwap R False)
+                    
                    , ("M-a s",        namedScratchpadAction scratchpads "spt"     )
                    -- , ("M-a d",        namedScratchpadAction scratchpads "dc"      )
                    , ("M-a d",        namedScratchpadAction scratchpads "vc"      )
@@ -80,3 +94,4 @@ myKeys themeName = [ ("M-q",   spawn $ (myTerminal ++ " --class=XMonadRecomplie 
                    , ("M-S-s", spawn myFlameshot )
                    , ("S-<Print>", spawn myFlameshot )
                    ]
+

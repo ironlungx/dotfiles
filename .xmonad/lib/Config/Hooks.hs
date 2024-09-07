@@ -16,6 +16,7 @@ import XMonad.Util.SpawnOnce (spawnOnce)
 import XMonad.Util.Run
 import XMonad.Util.NamedScratchpad
 import XMonad.Util.Run 
+import XMonad.Util.Cursor
 
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.Spacing
@@ -43,9 +44,12 @@ myStartupHook themeName = do
     spawn "picom -b"
     spawn $ ("killall polybar ; polybar main --reload -q -c ~/.config/polybar/" ++ themeName ++ "/config.ini")
 
+
     spawn "xclip"
-    spawn "xsetroot -cursor_name Bibata-Modern-Ice"
+    spawn "xsetroot -cursor_name left_ptr"
     spawnOnce "greenclip daemon"
+
+    spawn "xrdb -merge .Xresources"
 
     spawn $ "dunst -conf ~/.config/dunst/" ++ themeName
     spawn $ "feh --bg-fill --no-fehbg " ++ myWallpaper
@@ -72,9 +76,8 @@ myLayoutHook colorScheme = tall
             $ spacingWithEdge 3
             $ avoidStruts $ gaps (gap)
             $ Mirror tiled
-    monocle  = renamed [Replace "monocle"] 
-             $ noBorders
-             $ spacingWithEdge 3
+    monocle = noBorders
+             $ renamed [Replace "monocle"] 
              -- $ gaps [(D,4)]
              $ avoidStruts
              $ Full
@@ -109,7 +112,7 @@ myManageHook = namedScratchpadManageHook scratchpads <> composeAll
              , className =? "Xfce-polkit"               --> doFloat
 
 
-             -- , checkDock                          --> doLower
+             , checkDock                          --> doLower
              , title     =? "polybar-infobar"     --> doRaise
              
              ] 
