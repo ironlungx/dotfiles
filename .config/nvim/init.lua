@@ -15,3 +15,10 @@ vim.opt.rtp:prepend(lazypath)
 require("vim-options")
 
 require("lazy").setup("plugins", {change_detection = { notify = false }})
+
+vim.cmd [[
+  highlight Normal guibg=none
+  highlight NonText guibg=none
+  highlight Normal ctermbg=none
+  highlight NonText ctermbg=none
+]]

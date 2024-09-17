@@ -17,7 +17,7 @@ playerctl
 pcmanfm-qt
 
 bat
-kitty
+alacritty
 zoxide
 neovim
 fish

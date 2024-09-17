@@ -1,0 +1,33 @@
+import = [
+  "~/.config/alacritty/catppuccin-frappe.toml"
+]
+[env]
+  TERM = "xterm-256color"
+[cursor.style]
+shape = "Underline"
+
+[window]
+  opacity = 0.8
+
+[font]
+size = 10.0
+
+[font.bold]
+family = "Iosevka Nerd Font Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "Iosevka Nerd Font Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "Iosevka Nerd Font Mono"
+style = "Italic"
+
+[font.normal]
+family = "Iosevka Nerd Font Mono"
+style = "Regular"
+
+[window.padding]
+x = 10
+y = 10

@@ -26,7 +26,7 @@ import Config.ColorSwitch
 import Config.Hooks
 
 
-myKeys themeName = [ ("M-q",   spawn $ (myTerminal ++ " --class=XMonadRecomplie -- sh -c \'/usr/bin/xmonad --recompile || read -p  \"Press Enter to exit...\" cap\'" ))
+myKeys themeName = [ ("M-q",   spawn myRecompile)
                    , ("M-r",   spawn "xmonad --restart"                                           )
 
                    , ("M-S-q", kill                                                               )
@@ -91,7 +91,7 @@ myKeys themeName = [ ("M-q",   spawn $ (myTerminal ++ " --class=XMonadRecomplie 
                    , ("<XF86AudioPrev>",        spawn "playerctl previous"                        )
                    , ("<XF86AudioNext>",        spawn "playerctl next"                            )
                    
-                   , ("M-S-s", spawn myFlameshot )
+                   , ("M-S-s", spawn myScreenshot )
                    , ("S-<Print>", spawn myFlameshot )
                    ]
 

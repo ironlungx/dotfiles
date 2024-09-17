@@ -14,7 +14,7 @@ import XMonad.Util.NamedScratchpad
 
 
 scratchpads = [
-    NS "spt"     "LD_PRELOAD=/usr//lib/spotify-adblock.so spotify"      (className =? "Spotify") center,
+    NS "spt"     "LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify"      (className =? "Spotify") center,
     NS "dc"      "discord"                                              (className =? "discord") centerBig,
     NS "vc"      "vesktop"                                              (className =? "vesktop") centerBig,
     NS "term"    "kitty --class=scratchpadTerm"                         (className =? "scratchpadTerm") center,

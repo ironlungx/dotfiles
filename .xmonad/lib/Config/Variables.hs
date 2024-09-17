@@ -8,9 +8,10 @@
 
 module Config.Variables where 
 
-myTerminal    = "kitty"
+myTerminal    = "alacritty"
+myRecompile   = "alacritty --class=XMonadRecompile -e xmonad --recompile" 
 myBrowser     = "qutebrowser"
-myEditor      = "kitty -- nvim"
+myEditor      = "alacritty -e nvim"
 myExplorer    = "pcmanfm-qt"
 myScreenshot  = "maim -u -s | xclip -selection clipboard -t image/png"
 myFlameshot   = "flameshot gui"

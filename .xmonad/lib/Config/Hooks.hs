@@ -45,11 +45,11 @@ myStartupHook themeName = do
     spawn $ ("killall polybar ; polybar main --reload -q -c ~/.config/polybar/" ++ themeName ++ "/config.ini")
 
 
+    spawn "xrdb -merge .Xresources"
     spawn "xclip"
     spawn "xsetroot -cursor_name left_ptr"
     spawnOnce "greenclip daemon"
 
-    spawn "xrdb -merge .Xresources"
 
     spawn $ "dunst -conf ~/.config/dunst/" ++ themeName
     spawn $ "feh --bg-fill --no-fehbg " ++ myWallpaper
@@ -66,7 +66,7 @@ myLayoutHook colorScheme = tall
             ||| monocle
             ||| tabs
   where 
-    gap = [(U,3), (R,3), (L,3)]
+    gap = [(U,3), (R,3), (L,3), (D, 6)]
     tall = renamed [Replace "tall"]
          $ spacingWithEdge 3
          $ avoidStruts $ gaps (gap)
@@ -102,7 +102,7 @@ myLayoutHook colorScheme = tall
 
 
 myManageHook = namedScratchpadManageHook scratchpads <> composeAll 
-             [ ((className =? "XMonadRecomplie")  --> (doRectFloat $ W.RationalRect 0.25 0.25 0.5 0.5 ))
+             [ ((className =? "XMonadRecompile")  --> (doRectFloat $ W.RationalRect 0.25 0.25 0.5 0.5 ))
              , className =? "confirm"             --> doFloat
              , className =? "file_progress"       --> doFloat
              , className =? "dialog"              --> doFloat
@@ -110,6 +110,10 @@ myManageHook = namedScratchpadManageHook scratchpads <> composeAll
              , className =? "error"               --> doFloat
              , className =? "steam"               --> doFloat
              , className =? "Xfce-polkit"               --> doFloat
+             , stringProperty "WM_NAME" =? "vesktop"             --> doIgnore
+             , stringProperty "_NET_WM_WINDOW_TYPE" =? "_NET_WM_WINDOW_TYPE_DIALOG" --> doFloat
+             -- WM_WINDOW_ROLE(STRING) = "GtkFileChooserDialog"
+             , resource  =? "desktop_window" --> doCenterFloat
 
 
              , checkDock                          --> doLower
