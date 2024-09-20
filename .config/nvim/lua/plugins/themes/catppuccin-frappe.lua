@@ -83,6 +83,7 @@ return {
       visual = { a = { fg = colors.mantle, bg = colors.yellow } },
       replace = { a = { fg = colors.mantle, bg = colors.red } },
       command = { a = { fg = colors.mantle, bg = colors.peach } },
+      terminal = { a = { fg = colors.mantle, bg = colors.maroon } },
 
       inactive = {
         a = { fg = colors.text, bg = colors.crust },
