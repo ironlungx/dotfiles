@@ -45,9 +45,9 @@ myStartupHook themeName = do
     spawn $ ("killall polybar ; polybar main --reload -q -c ~/.config/polybar/" ++ themeName ++ "/config.ini")
 
 
+    spawn "xsetroot -cursor_name left_ptr"
     spawn "xrdb -merge .Xresources"
     spawn "xclip"
-    spawn "xsetroot -cursor_name left_ptr"
     spawnOnce "greenclip daemon"
 
 
@@ -115,10 +115,8 @@ myManageHook = namedScratchpadManageHook scratchpads <> composeAll
              -- WM_WINDOW_ROLE(STRING) = "GtkFileChooserDialog"
              , resource  =? "desktop_window" --> doCenterFloat
 
-
-             , checkDock                          --> doLower
-             , title     =? "polybar-infobar"     --> doRaise
-             
+             , checkDock --> doLower
+             , title =? "polybar-infobar"         --> (doRaise <+> doShift "" <+> doF W.shiftMaster <+> doF W.swapUp) 
              ] 
 
 myLogHook file = def { 

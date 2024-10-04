@@ -4,7 +4,7 @@ vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 vim.cmd("set nu rnu")
 vim.cmd("set relativenumber")
-vim.cmd("set nowrap")
+-- vim.cmd("set nowrap")
 vim.cmd("set guifont=JetbrainsMono\\ Nerd\\ Font:h11")
 
 vim.cmd("hi Folded guibg=NONE")

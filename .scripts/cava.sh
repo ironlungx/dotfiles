@@ -15,10 +15,10 @@ done
 config_file="/tmp/polybar_cava_config"
 echo "
 [general]
-bars = 10
+bars = 7
 
 [input]
-method = pulse
+method = pipewire
 
 [output]
 method = raw
@@ -29,5 +29,10 @@ ascii_max_range = 7
 
 # read stdout from cava
 cava -p $config_file | while read -r line; do
-    echo $line | sed $dict
+    echo $line | sed $dict &
+  
+playerctl -s metadata > /dev/null 2>&1
+if [[ $? -eq 1 ]]; then
+  exit 1
+fi
 done

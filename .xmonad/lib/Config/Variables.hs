@@ -21,5 +21,5 @@ myRun        = "rofi -show drun -config "
 
 myWallpaper   = "~/.wall/evening-sky.png"
 myPowermenu   = "killall xinit"
-myWorkspaces  = ["1", "2", "3", "4", "5"]
+myWorkspaces  = ["1", "2", "3", "4", "5" ]
 greenclipRofi = "rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}'"

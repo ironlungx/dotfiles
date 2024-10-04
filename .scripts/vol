@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Adjust volume
+case $1 in
+    up)
+        pactl set-sink-volume @DEFAULT_SINK@ +5%
+        ;;
+    down)
+        pactl set-sink-volume @DEFAULT_SINK@ -5%
+        ;;
+    mute)
+        pactl set-sink-mute @DEFAULT_SINK@ toggle
+        ;;
+esac
+
+# Get current volume and mute status
+volume=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\d+(?=%)' | head -n 1)
+mute=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
+
+# Choose icon based on volume level
+if [ "$mute" = "yes" ]; then
+    icon="audio-volume-muted"
+elif [ "$volume" -lt 33 ]; then
+    icon="audio-volume-low"
+elif [ "$volume" -lt 66 ]; then
+    icon="audio-volume-medium"
+else
+    icon="audio-volume-high"
+fi
+
+# Send notification
+dunstify -t 500 -i $icon -r 5555 "Volume: ${volume}%" -h int:value:"$volume"

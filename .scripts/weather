@@ -1,0 +1,41 @@
+#!/bin/bash
+
+
+# Function to fetch weather data
+get_weather() {
+    read latitude longitude < ~/location
+
+    local font="$1"
+    local color="$2"
+    local url="https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,weather_code&forecast_days=1"
+    
+    weather_data=$(curl -s "$url" | jq '{
+        temperature: .current.temperature_2m,
+        weather_code: .current.weather_code
+    }')
+    
+    temperature=$(echo "$weather_data" | jq -r '.temperature')
+    weather_code=$(echo "$weather_data" | jq -r '.weather_code')
+    
+    # Convert weather code to description using jq
+    weather_type=$(echo "$weather_code" | jq -r '
+        if . == 0 then ""
+        elif . >= 1 and . <= 3 then ""
+        elif . == 45 or . == 48 then ""
+        elif . >= 51 and . <= 55 then ""
+        elif . >= 61 and . <= 65 then ""
+        elif . >= 71 and . <= 75 then ""
+        elif . == 77 then ""
+        elif . >= 80 and . <= 82 then ""
+        elif . == 85 or . == 86 then ""
+        elif . == 95 then ""
+        elif . == 96 or . == 99 then ""
+        else "Unknown"
+        end
+    ')
+    
+    # Print the result
+    echo "%{F${color}}%{T${font}}$weather_type %{T-}%{F-} ${temperature}°C"
+}
+
+get_weather "$1" "$2"

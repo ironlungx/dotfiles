@@ -10,21 +10,20 @@
     corner_radius = 6
     dmenu = /usr/bin/rofi -dmenu
     origin = bottom-center
+    icon_theme = Oranchelo
+    enable_recursive_icon_lookup = true
 
-
-[urgency_low]
+    # Background color
     background = "#303446"
+    
+    # Foreground color
     foreground = "#c6d0f5"
+
+    # Frame color
     frame_color = "#8caaee"
 
-[urgency_normal]
-    background = "#303446"
-    foreground = "#c6d0f5"
-    frame_color = "#8caaee"
+    # Separator color
+    separator_color = "#babbf1"
 
-[urgency_critical]
-    background = "#303446"
-    foreground = "#c6d0f5"
-    frame_color = "#ef9f76"
-
-
+    # Highlight color (for URLs and actions)
+    highlight = "#ca9ee6"

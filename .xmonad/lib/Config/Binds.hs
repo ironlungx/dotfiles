@@ -17,6 +17,7 @@ import XMonad.Util.NamedScratchpad
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.ResizableTile
 import XMonad.Actions.Navigation2D
+import XMonad.Actions.CycleWS (moveTo, WSType(..))
 
 import System.Exit
 
@@ -55,7 +56,11 @@ myKeys themeName = [ ("M-q",   spawn myRecompile)
                    , ("M-k", windowGo U False)
                    , ("M-l", windowGo R False)
 
----------------------------------------------------------------------------------------
+                   , ("M-a", windows $ W.greedyView "1")  -- Switch to workspace 1
+                   , ("M-s", windows $ W.greedyView "2")  -- Switch to workspace 2
+                   , ("M-d", windows $ W.greedyView "3")  -- Switch to workspace 3
+                   , ("M-f", windows $ W.greedyView "4")  -- Switch to workspace 4
+                   , ("M-g", windows $ W.greedyView "5")  -- Switch to workspace 5---------------------------------------------------------------------------------------
 -- Vim style resizing keys
 ---------------------------------------------------------------------------------------
                    , ("M-S-h", sendMessage Shrink)
@@ -71,21 +76,20 @@ myKeys themeName = [ ("M-q",   spawn myRecompile)
                    , ("M-C-k", windowSwap U False)
                    , ("M-C-l", windowSwap R False)
                     
-                   , ("M-a s",        namedScratchpadAction scratchpads "spt"     )
-                   -- , ("M-a d",        namedScratchpadAction scratchpads "dc"      )
-                   , ("M-a d",        namedScratchpadAction scratchpads "vc"      )
-                   , ("M-a c",        namedScratchpadAction scratchpads "dotconf" )
-                   , ("M-a <Return>", namedScratchpadAction scratchpads "term"    )
+                   , ("M-w s",        namedScratchpadAction scratchpads "spt"     )
+                   , ("M-w d",        namedScratchpadAction scratchpads "vc"      )
+                   , ("M-w c",        namedScratchpadAction scratchpads "dotconf" )
+                   , ("M-w <Return>", namedScratchpadAction scratchpads "term"    )
           
-                   , ("M-s p", spawn "~/.scripts/picom-toggle" )
-                   , ("M-s b", spawn "rofi-bluetooth"          )
-                   , ("M-s e", spawn "rofi -show emoji"        )
+                   , ("M-o b", spawn "rofi-bluetooth"            )
+                   , ("M-o e", spawn "rofi -show emoji"          )
+                   , ("M-o n", spawn "dunstctl set-paused toggle")
                    
                    , ("M-z", spawn "playerctl play-pause" )
                    , ("M-y", promptForTheme)
                    
-                   , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -10%" )
-                   , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +10%" )
+                   , ("<XF86AudioLowerVolume>", spawn "~/.scripts/vol down" )
+                   , ("<XF86AudioRaiseVolume>", spawn "~/.scripts/vol up" )
                    , ("<XF86AudioMute>",        spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle" )
                    , ("<XF86AudioPlay>",        spawn "playerctl play-pause"                      )
                    , ("<XF86AudioPrev>",        spawn "playerctl previous"                        )
