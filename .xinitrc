@@ -1,3 +1,3 @@
 export QT_STYLE_OVERRIDE=kvantum
-xmonad
-# exec startplasma-x11
+export GTK_THEME=catppuccin-frappe-lavender-standard+default
+exec xmonad

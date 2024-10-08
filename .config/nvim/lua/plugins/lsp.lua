@@ -34,19 +34,20 @@ return {
           }
         }
       })
+      lspconfig.ruff.setup {}
       vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
 
       -- Jump to previous error
       vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
     end,
-  },
-  keys = {
-    { "<leader>la", "<cmd> lua vim.lsp.buf.code_action() <cr>",           desc = "Code Actions" },
-    { "<leader>ld", "<cmd> lua vim.lsp.buf.definition() <cr>",            desc = "Definition" },
-    { "<leader>lf", "<cmd> lua vim.lsp.buf.format { async = true } <cr>", desc = "Format" },
-    { "<leader>li", "<cmd> lua vim.lsp.buf.implementation() <cr>",        desc = "Implementation" },
-    { "<leader>lk", "<cmd> lua vim.lsp.buf.hover() <cr>",                 desc = "Hover" },
-    { "<leader>lr", "<cmd> lua vim.lsp.buf.rename() <cr>",                desc = "Rename Symbol" },
+    keys = {
+      { "<leader>la", "<cmd> lua vim.lsp.buf.code_action() <cr>",           desc = "Code Actions" },
+      { "<leader>ld", "<cmd> lua vim.lsp.buf.definition() <cr>",            desc = "Definition" },
+      { "<leader>lf", "<cmd> lua vim.lsp.buf.format { async = true } <cr>", desc = "Format" },
+      { "<leader>li", "<cmd> lua vim.lsp.buf.implementation() <cr>",        desc = "Implementation" },
+      { "<leader>lk", "<cmd> lua vim.lsp.buf.hover() <cr>",                 desc = "Hover" },
+      { "<leader>lr", "<cmd> lua vim.lsp.buf.rename() <cr>",                desc = "Rename Symbol" },
+    },
   },
   {
     "folke/trouble.nvim",

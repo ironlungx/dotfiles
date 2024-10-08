@@ -14,7 +14,7 @@ import Config.Variables
 
 
 scratchpads = [
-    NS "spt"     "LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify"      (className =? "Spotify") center,
+    NS "spt"     "youtube-music"      (className =? "youtube music") center,
     NS "dc"      "discord"                                              (className =? "discord") centerBig,
     NS "vc"      "vesktop"                                              (className =? "vesktop") centerBig,
     NS "term"    (myTerminal ++ " --class=scratchpadTerm")                         (className =? "scratchpadTerm") center,

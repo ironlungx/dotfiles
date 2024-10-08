@@ -52,7 +52,7 @@ myStartupHook themeName = do
 
 
     spawn $ "dunst -conf ~/.config/dunst/" ++ themeName
-    spawn $ "feh --bg-fill --no-fehbg " ++ myWallpaper
+    spawn "~/.fehbg"
 
     spawn "setxkbmap -layout us -option caps:super"
     spawnOnce "/usr/lib/xfce-polkit/xfce-polkit"
