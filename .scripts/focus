@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+FILE="/tmp/is_focus"
+
+## Check file contents
+is_focus() {
+    if [ -f "$FILE" ]; then
+        return 0  # In Bash, 0 means true
+    else
+        return 1  # Non-zero values mean false
+    fi
+}
+
+toggle() {
+    if [ -f "$FILE" ]; then
+        rm "$FILE"
+    else
+        touch "$FILE"
+    fi
+}
+
+## Main execution
+if [[ "$1" == "toggle" ]]; then
+    toggle
+    exit 0
+elif [[ "$1" == "status" ]]; then
+    font="$2"
+    color_normal="$3"
+    color_focus="$4"
+
+    if is_focus; then
+        echo "%{F${color_focus}}%{T${font}} %{T-}%{F-}"
+    else
+        echo "%{F${color_normal}}%{T${font}} %{T-}%{F-}"
+    fi
+
+elif [[ "$1" == "daemon" ]]; then
+  while true; do 
+    while [ ! -f "$FILE" ]; do
+      sleep 0.5
+    done
+
+    while [ -f "$FILE" ]; do 
+       killall -9 electron > /dev/null 2>&1
+      sleep 0.5
+    done
+  done
+fi

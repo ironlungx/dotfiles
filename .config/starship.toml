@@ -3,7 +3,7 @@ palette = "catppuccin_frappe"
 
 [character]
 # Note the use of Catppuccin color 'maroon'
-success_symbol = "[(green)❯](maroon)"
+success_symbol = "[(green)❯](yellow)"
 error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](green)"
 

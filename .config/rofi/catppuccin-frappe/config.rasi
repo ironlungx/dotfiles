@@ -1,5 +1,5 @@
 configuration{
-    modi: "run,drun,emoji";
+    modi: "run,drun,emoji,calc";
     icon-theme: "Oranchelo";
     show-icons: true;
     terminal: "kitty";
@@ -12,6 +12,7 @@ configuration{
     display-window: " 󰕰  Window";
     display-Network: " 󰤨  Network";
     display-emoji: " 󰞅 Emoji ";
+    display-calc: "  Calc ";
     sidebar-mode: true;
 }
 

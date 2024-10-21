@@ -2,14 +2,16 @@ return {
   {
     "williamboman/mason.nvim",
     config = function()
-      require("mason").setup({})
+      require("mason").setup({
+        ensure_installed = { "black", "stylua", "flake8" },
+      })
     end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "clangd", "ruff", "basedpyright", "black" },
+        ensure_installed = { "lua_ls", "clangd", "ruff", "basedpyright" },
       })
     end,
   },
