@@ -112,6 +112,7 @@ myManageHook = namedScratchpadManageHook scratchpads <> composeAll
              , className =? "error"               --> doFloat
              , className =? "steam"               --> doFloat
              , className =? "Xfce-polkit"               --> doFloat
+             , className =? "Zenity"              --> doFloat
              , stringProperty "WM_NAME" =? "vesktop"             --> doIgnore
              , stringProperty "_NET_WM_WINDOW_TYPE" =? "_NET_WM_WINDOW_TYPE_DIALOG" --> doFloat
              -- WM_WINDOW_ROLE(STRING) = "GtkFileChooserDialog"

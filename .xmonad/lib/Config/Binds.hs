@@ -119,6 +119,6 @@ myKeys themeName = [ ("M-q",   spawn myRecompile)
                    , ("<XF86AudioPrev>",        spawn "playerctl previous"                        )
                    , ("<XF86AudioNext>",        spawn "playerctl next"                            )
                    
-                   , ("S-<Print>", spawn myFlameshot )
+                   , ("M-C-s", spawn myFlameshot )
                    ]
 
