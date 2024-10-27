@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+INIT_COUNT=$(lsusb | wc -l)
+
+while true; do
+    CURRENT_COUNT=$(lsusb | wc -l)
+    if [ $INIT_COUNT -ne $CURRENT_COUNT ]; then
+      mpv --no-video ~/.local/share/sounds/Clink.ogg
+        INIT_COUNT=$CURRENT_COUNT
+    fi
+    sleep 0.3
+done
