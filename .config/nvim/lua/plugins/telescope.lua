@@ -49,6 +49,8 @@ return {
       { "<leader>ff", '<cmd> lua require("telescope.builtin").find_files() <cr>', desc = "Files" },
       { "<leader>fg", '<cmd> lua require("telescope.builtin").live_grep() <cr>',  desc = "Live Grep" },
       { "<leader>fo", '<cmd> lua require("telescope.builtin").oldfiles() <cr>',   desc = "Old Files" },
+
+      { "<leader>lt", '<cmd> Telescope lsp_document_symbols <cr>',   desc = "Old Files" },
     }
   },
   {
