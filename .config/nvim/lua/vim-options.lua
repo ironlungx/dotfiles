@@ -16,3 +16,6 @@ vim.opt.showmode = false
 vim.keymap.set("t", "<C-x>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 vim.keymap.set("n", "<leader>fs", ":w <CR>", { desc = "Save buffer" })
 vim.keymap.set("n", "<Esc>", ":nohl<CR>", { silent = true, desc = "Remove Highlights" })
+
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
