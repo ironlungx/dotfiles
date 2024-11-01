@@ -17,7 +17,6 @@ return {
       vim.opt.completeopt = "menu,menuone,noselect"
       local luasnip = require("luasnip")
       local cmp = require("cmp")
-      require("luasnip.loaders.from_vscode").lazy_load()
       local lspkind = require('lspkind')
 
       cmp.setup({
@@ -33,13 +32,6 @@ return {
         formatting = {
           format = lspkind.cmp_format({
             mode = "symbol",
-            -- menu = ({
-            --   buffer = "",
-            --   nvim_lsp = "",
-            --   luasnip = "",
-            --   fonts = "󰛖",
-            --   paths = ""
-            -- })
           }),
         },
         mapping = cmp.mapping.preset.insert({
@@ -53,10 +45,8 @@ return {
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp" }, -- lsp
-          { name = "luasnip" },  -- snippets
           { name = "buffer" },   -- text within current buffer
           { name = "path" },     -- file system paths
-          { name = "fonts", option = { space_filter = "-" } },
           { name = 'nvim_lsp_signature_help' }
         }),
       })
