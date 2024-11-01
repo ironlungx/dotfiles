@@ -60,6 +60,7 @@ myStartupHook themeName = do
     spawnOnce "devmon --exec-on-drive 'notify-send \"New USB storage connected\" \"A new USB device %l was detected\nMount point: %d\"'"
     
     spawnOnce "~/.scripts/focus daemon"
+    spawnOnce "~/.scripts/sounds"
 
     setWMName "XMonad"
 
