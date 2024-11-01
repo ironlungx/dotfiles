@@ -5,3 +5,4 @@
 .config/fish/completions/pio.fish
 .xmonad/prompt-history
 .xmonad/xmonad.errors
+.config/qutebrowser/__pycache__
