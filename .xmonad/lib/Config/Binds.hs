@@ -37,7 +37,7 @@ myKeys themeName = [ ("M-q",   spawn myRecompile)
                    , ("M-e",   spawn myExplorer                                                   )
                    , ("M-v",   spawn greenclipRofi                                                )
           
-                   , ("M-b", sendMessage ToggleStruts)
+                   , ("M-b", spawn "polybar-msg cmd toggle")
                    
                    , ("M-<Escape>",   io (exitWith ExitSuccess))
 

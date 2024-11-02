@@ -44,9 +44,7 @@ myStartupHook themeName = do
     spawn "picom -b"
     spawn $ ("killall polybar ; polybar main --reload -q -c ~/.config/polybar/" ++ themeName ++ "/config.ini")
 
-
     spawn "xsetroot -cursor_name left_ptr"
-    spawn "xrdb -merge .Xresources"
     spawn "xclip"
     spawnOnce "greenclip daemon"
 
