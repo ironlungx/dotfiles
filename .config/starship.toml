@@ -9,6 +9,8 @@ right_format = "$cmd_duration"
 success_symbol = "[ ](bold green)"
 error_symbol = "[ ](bold red)"
 vicmd_symbol = "[ ](bold yellow)"
+vimcmd_replace_symbol = "[ ](bold red)"
+vimcmd_replace_one_symbol = "[ ](bold red)"
 
 [username]
 show_always = true
