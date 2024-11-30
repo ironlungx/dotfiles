@@ -48,7 +48,6 @@ myStartupHook themeName = do
     spawn "xclip"
     spawnOnce "greenclip daemon"
 
-
     spawn $ "dunst -conf ~/.config/dunst/" ++ themeName
     spawn "~/.fehbg"
 
@@ -59,6 +58,8 @@ myStartupHook themeName = do
     
     spawnOnce "~/.scripts/focus daemon"
     spawnOnce "~/.scripts/sounds"
+
+    spawnOnce "paplay ~/.local/share/sounds/valve-intro.mp3"
 
     setWMName "XMonad"
 

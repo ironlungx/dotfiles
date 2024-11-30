@@ -5,7 +5,7 @@ INIT_COUNT=$(lsusb | wc -l)
 while true; do
     CURRENT_COUNT=$(lsusb | wc -l)
     if [ $INIT_COUNT -ne $CURRENT_COUNT ]; then
-      mpv --no-video ~/.local/share/sounds/Clink.ogg
+        paplay ~/.local/share/sounds/blip1.mp3
         INIT_COUNT=$CURRENT_COUNT
     fi
     sleep 0.3

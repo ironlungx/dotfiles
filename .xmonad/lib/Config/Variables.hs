@@ -17,7 +17,7 @@ myScreenshot  = "maim -u -s | xclip -selection clipboard -t image/png"
 myFlameshot   = "flameshot gui"
 myLock        = "i3lock-fancy"
 
-myRun        = "rofi -show drun -config "
+myRun        = "paplay ~/.local/share/sounds/wpn_moveselect.mp3 & rofi -show drun -config "
 
 myPowermenu   = "killall xinit"
 myWorkspaces  = ["1", "2", "3", "4", "5" ]

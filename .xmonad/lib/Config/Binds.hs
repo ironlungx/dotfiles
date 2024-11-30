@@ -39,11 +39,14 @@ myKeys themeName = [ ("M-q",   spawn myRecompile)
           
                    , ("M-b", spawn "polybar-msg cmd toggle")
                    
-                   , ("M-<Escape>",   io (exitWith ExitSuccess))
+                   , ("M-C-<Escape>",   io (exitWith ExitSuccess))
 
                    , ("M-S-<Return>", spawn myTerminal         )
                    , ("M-C-<Return>", spawn myBrowser          )
 
+---------------------------------------------------------------------------------------
+-- Layout switching
+---------------------------------------------------------------------------------------
                    , (("M-u"), sendMessage NextLayout)
                    , (("M-S-u"), sendMessage $ JumpToLayout "tall")
  
