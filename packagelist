@@ -21,6 +21,7 @@ alacritty
 zoxide
 neovim
 fish
+mpv
 
 firefox
 fzf
@@ -33,3 +34,5 @@ jq
 rofi-emoji 
 unzip 
 python-distutils-extra
+
+libpulse
