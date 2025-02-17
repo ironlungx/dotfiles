@@ -106,6 +106,7 @@ myKeys themeName = [ ("M-q",   spawn myRecompile)
                    , ("M-o b", spawn "rofi-bluetooth"            )
                    , ("M-o e", spawn "rofi -show emoji"          )
                    , ("M-o n", spawn "dunstctl set-paused toggle")
+                   , ("M-o f", spawn "~/.scripts/focus toggle")
                    , ("M-o s", spawn myScreenshot )
 
                    , ("M-c", spawn "rofi -show calc -modi calc -no-show-match -no-sort")

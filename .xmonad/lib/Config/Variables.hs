@@ -10,7 +10,7 @@ module Config.Variables where
 
 myTerminal    = "kitty"
 myRecompile   = "kitty --class=XMonadRecompile -- xmonad --recompile" 
-myBrowser     = "zen-browser"
+myBrowser     = "qutebrowser"
 myEditor      = "kitty -- nvim"
 myExplorer    = "pcmanfm-qt"
 myScreenshot  = "maim -u -s | xclip -selection clipboard -t image/png"

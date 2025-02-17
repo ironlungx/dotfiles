@@ -1,3 +1,0 @@
-return {
- "edluffy/hologram.nvim"
-}

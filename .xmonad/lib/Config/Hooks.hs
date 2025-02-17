@@ -41,27 +41,31 @@ import Config.Scratchpads
 import Colors
 
 myStartupHook themeName = do
-    spawn "picom -b"
-    spawn $ ("killall polybar ; polybar main --reload -q -c ~/.config/polybar/" ++ themeName ++ "/config.ini")
+  spawn "picom -b"
+  spawn $ ("killall polybar ; polybar main --reload -q -c ~/.config/polybar/" ++ themeName ++ "/config.ini")
 
-    spawn "xsetroot -cursor_name left_ptr"
-    spawn "xclip"
-    spawnOnce "greenclip daemon"
+  -- spawn "mpd"
+  -- spawn "mpd-mpris"
+  -- spawn "mpd-discord-rpc"
 
-    spawn $ "dunst -conf ~/.config/dunst/" ++ themeName
-    spawn "~/.fehbg"
+  spawn "xsetroot -cursor_name left_ptr"
+  spawn "xclip"
+  spawnOnce "greenclip daemon"
 
-    spawn "setxkbmap -layout us -option caps:super"
-    spawnOnce "/usr/lib/xfce-polkit/xfce-polkit"
+  spawn $ "dunst -conf ~/.config/dunst/" ++ themeName
+  spawn "~/.fehbg"
 
-    spawnOnce "devmon --exec-on-drive 'notify-send \"New USB storage connected\" \"A new USB device %l was detected\nMount point: %d\"'"
-    
-    spawnOnce "~/.scripts/focus daemon"
-    spawnOnce "~/.scripts/sounds"
+  spawn "setxkbmap -layout us -option caps:super"
+  spawnOnce "/usr/lib/xfce-polkit/xfce-polkit"
 
-    spawnOnce "paplay ~/.local/share/sounds/valve-intro.mp3"
+  spawnOnce "devmon --exec-on-drive 'notify-send \"New USB storage connected\" \"A new USB device %l was detected\nMount point: %d\"'"
+  
+  spawnOnce "~/.scripts/focus daemon"
+  spawnOnce "~/.scripts/sounds"
 
-    setWMName "XMonad"
+  spawnOnce "paplay ~/.local/share/sounds/valve-intro.mp3"
+
+  setWMName "XMonad"
 
 myLayoutHook colorScheme = tall
             ||| mTall

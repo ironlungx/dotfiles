@@ -14,12 +14,13 @@ import Config.Variables
 
 
 scratchpads = [
-    NS "spt"     "LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify"      (className =? "Spotify") center,
-    NS "dc"      "discord"                                              (className =? "discord") centerBig,
-    NS "vc"      "vesktop"                                              (className =? "vesktop") centerBig,
-    NS "term"    (myTerminal ++ " --class=scratchpadTerm")                         (className =? "scratchpadTerm") center,
+    NS "spt"     "LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify"        (className =? "Spotify")        center,
+    NS "dc"      "discord"                                                     (className =? "discord")        centerBig,
+    NS "vc"      "vesktop"                                                     (className =? "vesktop")        centerBig,
+    NS "term"    (myTerminal ++ " --class=scratchpadTerm")                     (className =? "scratchpadTerm") center,
+    NS "mpd"     (myTerminal ++ " --class=mpd " ++ "ncmpcpp")                  (className =? "mpd")            center,
 
-    NS "dotconf" "kitty --class=dotconf -- sh -c \"cd ~/dotfiles/ ; nvim\""    (className =? "dotconf") centerBig
+    NS "dotconf" "kitty --class=dotconf -- sh -c \"cd ~/dotfiles/ ; nvim\""    (className =? "dotconf")        centerBig
   ]
   where 
     center = customFloating $ W.RationalRect l t w h
