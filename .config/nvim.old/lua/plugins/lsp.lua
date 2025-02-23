@@ -31,9 +31,8 @@ return {
 				on_attach = on_attach,
 				cmd = {
 					"/usr/bin/clangd",
-					-- "/home/t/dev/llvm-project-xtensa/build/bin/clangd",
-					"--background-index",
-					"--query-driver=/home/ironlung/.platformio/packages/toolchain-xtensa-esp32s3/bin/xtensa-esp32s3-elf-g*",
+					"--clang-tidy",
+          "--completion-style=detailed"
 				},
 				filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
 			})
@@ -56,7 +55,7 @@ return {
 		keys = {
 			{ "<leader>la", "<cmd> lua vim.lsp.buf.code_action() <cr>", desc = "Code Actions" },
 			{ "<leader>ld", "<cmd> lua vim.lsp.buf.definition() <cr>", desc = "Definition" },
-			{ "<leader>lf", "<cmd> lua vim.lsp.buf.format { async = true } <cr>", desc = "Format" },
+			{ "<leader>lf", "<cmd> lua require('conform').format()  <cr>", desc = "Format" },
 			{ "<leader>li", "<cmd> lua vim.lsp.buf.implementation() <cr>", desc = "Implementation" },
 			{ "<leader>lk", "<cmd> lua vim.lsp.buf.hover() <cr>", desc = "Hover" },
 			{ "<leader>lr", "<cmd> lua vim.lsp.buf.rename() <cr>", desc = "Rename Symbol" },
@@ -68,7 +67,7 @@ return {
 		cmd = "Trouble",
 		keys = {
 			{
-				"<leader>lt",
+				"<leader>lT",
 				"<cmd>Trouble diagnostics toggle<cr>",
 				desc = "Diagnostics (Trouble)",
 			},
