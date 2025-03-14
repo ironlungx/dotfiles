@@ -6,6 +6,8 @@
 
 config_version: 2
 settings:
+  backend:
+    global: webengine
   bindings.commands:
     global:
       normal:
@@ -17,19 +19,26 @@ settings:
         K: tab-next
         aa: set-cmd-text -s :quickmark-add {url} {title}
   colors.webpage.darkmode.enabled:
-    global: true
+    global: false
   colors.webpage.darkmode.policy.images:
     global: never
   colors.webpage.preferred_color_scheme:
     global: dark
+  completion.shrink:
+    global: true
   content.blocking.enabled:
     global: true
+  content.blocking.method:
+    global: both
   content.javascript.clipboard:
     global: access-paste
   content.javascript.enabled:
     global: true
   content.notifications.enabled:
+    https://app.todoist.com: true
     https://www.youtube.com: false
+  content.register_protocol_handler:
+    https://mail.google.com?extsrc=mailto&url=%25s: true
   fonts.default_family:
     global: Jetbrains Mono
   fonts.default_size:
@@ -41,6 +50,8 @@ settings:
   spellcheck.languages:
     global:
     - en-US
+  statusbar.show:
+    global: always
   statusbar.widgets:
     global:
     - keypress
@@ -51,3 +62,11 @@ settings:
     - progress
   tabs.show:
     global: always
+  url.searchengines:
+    global:
+      '!aw': https://wiki.archlinux.org/index.php?title=Special%3ASearch&search={}
+      '!yt': https://www.youtube.com/results?search_query={}
+      DEFAULT: https://duckduckgo.com/?q={}
+      aw: https://wiki.archlinux.org/?search={}
+      p: https://www.perplexity.ai/?q={}
+      yt: https://www.youtube.com/results?search_query={}
