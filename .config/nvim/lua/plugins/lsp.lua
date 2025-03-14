@@ -11,7 +11,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "clangd", "ruff", "basedpyright" },
+				ensure_installed = { "lua_ls", "clangd", "ruff", "basedpyright", },
 			})
 		end,
 	},
@@ -29,12 +29,22 @@ return {
 					vim.lsp.protocol.make_client_capabilities()
 				),
 				on_attach = on_attach,
-				cmd = {
-					"/usr/bin/clangd",
-					"--clang-tidy",
-          "--completion-style=detailed"
-				},
-				filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+				    cmd = {
+          "clangd",
+          "--background-index",
+          "-j=12",
+          "--query-driver=**",
+          "--clang-tidy",
+          "--all-scopes-completion",
+          "--cross-file-rename",
+          "--completion-style=detailed",
+          "--header-insertion-decorators",
+          "--header-insertion=iwyu",
+          "--pch-storage=memory",
+          "--suggest-missing-includes",
+          "--malloc-trim"
+        },
+        filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto", "ino" },
 			})
 			lspconfig.basedpyright.setup({
 				settings = {
