@@ -65,6 +65,8 @@ myStartupHook themeName = do
 
   spawnOnce "paplay ~/.local/share/sounds/valve-intro.mp3"
 
+  spawnOnce "flameshot"
+
   setWMName "XMonad"
 
 myLayoutHook colorScheme = tall

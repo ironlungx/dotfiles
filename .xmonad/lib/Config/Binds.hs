@@ -34,7 +34,6 @@ myKeys themeName = [ ("M-q",   spawn myRecompile)
 
                    , ("M-p",   spawn $ (myRun ++ "~/.config/rofi/" ++ themeName ++ "/config.rasi"))
                    , ("M-S-z", spawn myLock                                                       )
-                   , ("M-e",   spawn myExplorer                                                   )
                    , ("M-v",   spawn greenclipRofi                                                )
           
                    , ("M-b", spawn "polybar-msg cmd toggle")
@@ -124,5 +123,10 @@ myKeys themeName = [ ("M-q",   spawn myRecompile)
                    , ("<XF86AudioNext>",        spawn "playerctl next"                            )
                    
                    , ("M-C-s", spawn myFlameshot )
+
+                   , ("M-e s", spawn "~/.scripts/emojify ':skull:'        ")
+                   , ("M-e c", spawn "~/.scripts/emojify ':cold_face:'    ")
+                   , ("M-e z", spawn "~/.scripts/emojify ':sob:'          ")
+                   , ("M-e p", spawn "~/.scripts/emojify ':pleading_face:'")
                    ]
 

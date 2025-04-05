@@ -33,16 +33,6 @@ return {
           "clangd",
           "--background-index",
           "-j=12",
-          "--query-driver=**",
-          "--clang-tidy",
-          "--all-scopes-completion",
-          "--cross-file-rename",
-          "--completion-style=detailed",
-          "--header-insertion-decorators",
-          "--header-insertion=iwyu",
-          "--pch-storage=memory",
-          "--suggest-missing-includes",
-          "--malloc-trim"
         },
         filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto", "ino" },
 			})

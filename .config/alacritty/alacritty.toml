@@ -1,5 +1,6 @@
 [env]
   TERM = "xterm-256color"
+
 [cursor.style]
 shape = "Underline"
 
@@ -7,23 +8,8 @@ shape = "Underline"
   opacity = 0.8
 
 [font]
-size = 10.0
-
-[font.bold]
-family = "Iosevka Nerd Font Mono"
-style = "Bold"
-
-[font.bold_italic]
-family = "Iosevka Nerd Font Mono"
-style = "Bold Italic"
-
-[font.italic]
-family = "Iosevka Nerd Font Mono"
-style = "Italic"
-
-[font.normal]
-family = "Iosevka Nerd Font Mono"
-style = "Regular"
+family = "JetbrainsMono NF Regular"
+size = 9
 
 [general]
 import = [
@@ -31,5 +17,5 @@ import = [
 ]
 
 [window.padding]
-x = 10
-y = 10
+x = 20
+y = 20
