@@ -1,1 +1,0 @@
-return { require("plugins.themes.catppuccin-frappe") }
