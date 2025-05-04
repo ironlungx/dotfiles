@@ -1,4 +1,8 @@
 # Dotfiles
+
+> [!CAUTION]
+> I've stopped updating this repository because I moved over to nix-os. my latest dotfiles can be found [here](https://github.com/ironlungx/nix-config)
+
 ## Table of Contents
 - [Info](#info)
 - [Gallery](#gallery)
